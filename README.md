@@ -1,16 +1,24 @@
-# naeng_meh_chu
+# 냉메추
+냉메추 플러터 레포입니다.
 
-A new Flutter project.
+# Commit Convention
 
-## Getting Started
+[Feat] 새로운 기능 추가
 
-This project is a starting point for a Flutter application.
+[Fix] 버그 수정
 
-A few resources to get you started if this is your first Flutter project:
+[Docs]	문서 수정
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[Style] 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Refactor] 코드 리펙토링
+
+[Test] 테스트(테스트 코드 추가, 수정, 삭제, 비즈니스 로직에 변경이 없는 경우)
+
+[Chore] 위에 걸리지 않는 기타 변경사항 (빌드 스크립트 수정, assets image, 패키지 매니저 등)
+
+[Comment] 필요한 주석 추가 및 변경
+
+[Rename] 파일 혹은 폴더명 수정하거나 옮기는 경우
+
+[Remove] 파일을 삭제하는 작업만 수행하는 경우
