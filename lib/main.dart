@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:naeng_meh_chu/presentation/login/view/login_screen.dart';
 
 void main() {
@@ -10,10 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: CupertinoThemeData(),
-      home: LoginScreen(),
+      home: const LoginScreen(),
+      theme: ThemeData(
+        fontFamily: 'Pretendard',
+      ),
     );
   }
 }
