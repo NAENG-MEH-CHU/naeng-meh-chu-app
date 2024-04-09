@@ -7,4 +7,10 @@ class NaengMehChuThemeTextStyle {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+
+  static const TextStyle pinkBold24 = TextStyle(
+    color: NaengMehChuThemeColor.pink,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  );
 }
