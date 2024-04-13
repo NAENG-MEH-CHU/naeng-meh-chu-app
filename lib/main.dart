@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/presentation/login/view/login_screen.dart';
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const LoginScreen(),
       theme: ThemeData(
-        fontFamily: 'Pretendard',
+        fontFamily: 'NotoSansKR',
         scaffoldBackgroundColor: NaengMehChuThemeColor.white,
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: NaengMehChuThemeColor.black,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SvgPicture.asset('assets/icon/ic_naver.svg'),
             Image.asset(
               'assets/image/img_logo.png',
               width: 90,
