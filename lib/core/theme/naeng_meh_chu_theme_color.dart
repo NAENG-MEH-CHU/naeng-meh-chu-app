@@ -8,4 +8,6 @@ class NaengMehChuThemeColor {
 
   static const Color gray1 = Color(0xFF404040);
   static const Color gray2 = Color(0xFFBBBBBB);
+
+  static const Color naverColor = Color(0xFF06BD34);
 }
