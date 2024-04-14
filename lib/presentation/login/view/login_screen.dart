@@ -35,8 +35,9 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             LoginButton(
+              onPressed: () {},
               borderSide:
-                  BorderSide(width: 1.0, color: NaengMehChuThemeColor.gray2),
+                  const BorderSide(width: 1.0, color: NaengMehChuThemeColor.gray2),
               svgPicture: SvgPicture.asset(
                 'assets/icon/ic_google.svg',
                 height: 36,
@@ -45,6 +46,7 @@ class LoginScreen extends StatelessWidget {
               text: '구글로 시작하기',
             ),
             LoginButton(
+              onPressed: () {},
               backgroundColor: NaengMehChuThemeColor.naverColor,
               svgPicture: SvgPicture.asset(
                 'assets/icon/ic_naver.svg',

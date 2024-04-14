@@ -50,16 +50,19 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   Widget build(BuildContext context) {
     return enabled
         ? Bouncing(
-            child: Container(
-              decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: borderSide ?? BorderSide.none,
-                    borderRadius:
-                        BorderRadius.circular(borderRadius ?? borderRadius!),
-                  ),
-                  color: backgroundColor ?? NaengMehChuThemeColor.white),
-              width: width ?? double.infinity,
-              child: buttonChild ?? Container(),
+            child: GestureDetector(
+              onTap: onPressed,
+              child: Container(
+                decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: borderSide ?? BorderSide.none,
+                      borderRadius:
+                          BorderRadius.circular(borderRadius ?? borderRadius!),
+                    ),
+                    color: backgroundColor ?? NaengMehChuThemeColor.white),
+                width: width ?? double.infinity,
+                child: buttonChild ?? Container(),
+              ),
             ),
           )
         : Container(
