@@ -19,6 +19,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
   final Color? backgroundColor;
   @override
+  final BorderSide? borderSide;
+  @override
   final Color? borderColor;
   @override
   final double? borderRadius;
@@ -37,6 +39,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       this.onPressed,
       required this.enabled,
       this.backgroundColor,
+      this.borderSide,
       this.borderColor,
       this.borderRadius,
       this.textStyle,
@@ -48,18 +51,24 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
     return enabled
         ? Bouncing(
             child: Container(
-              decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(borderRadius ?? borderRadius!),
+              decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: borderSide ?? BorderSide.none,
+                    borderRadius:
+                        BorderRadius.circular(borderRadius ?? borderRadius!),
+                  ),
                   color: backgroundColor ?? NaengMehChuThemeColor.white),
               width: width ?? double.infinity,
               child: buttonChild ?? Container(),
             ),
           )
         : Container(
-            decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(borderRadius ?? borderRadius!),
+            decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: borderSide ?? const BorderSide(width: 0),
+                  borderRadius:
+                      BorderRadius.circular(borderRadius ?? borderRadius!),
+                ),
                 color: backgroundColor ?? NaengMehChuThemeColor.white),
             width: width ?? double.infinity,
             child: buttonChild ?? Container(),
