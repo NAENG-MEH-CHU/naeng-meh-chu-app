@@ -34,10 +34,13 @@ class LoginScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            const SizedBox(
+              height: 16.0,
+            ),
             LoginButton(
               onPressed: () {},
-              borderSide:
-                  const BorderSide(width: 1.0, color: NaengMehChuThemeColor.gray2),
+              borderSide: const BorderSide(
+                  width: 1.0, color: NaengMehChuThemeColor.gray2),
               svgPicture: SvgPicture.asset(
                 'assets/icon/ic_google.svg',
                 height: 36,

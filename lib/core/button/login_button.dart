@@ -25,7 +25,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
       child: PrimaryButton(
         enabled: true,
         onPressed: onPressed,
@@ -39,14 +39,11 @@ class LoginButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               svgPicture,
-              Expanded(
-                child: Center(
-                  child: Text(
-                    text,
-                    style: NaengMehChuThemeTextStyle.blackMedium15,
-                  ),
-                ),
+              Text(
+                text,
+                style: NaengMehChuThemeTextStyle.blackMedium15,
               ),
+              const SizedBox(width: 24.0,)
             ],
           ),
         ),
