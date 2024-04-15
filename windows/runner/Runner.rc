@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.mju" "\0"
             VALUE "FileDescription", "naeng_meh_chu" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "naeng_meh_chu" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.mju. All rights reserved." "\0"
             VALUE "OriginalFilename", "naeng_meh_chu.exe" "\0"
             VALUE "ProductName", "naeng_meh_chu" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
