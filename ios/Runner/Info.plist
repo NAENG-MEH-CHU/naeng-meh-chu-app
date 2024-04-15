@@ -47,32 +47,53 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
-		<key>CFBundleURLTypes</key>
-		<array>
-			<dict>
-				<key>CFBundleTypeRole</key>
-				<string>Editor</string>
-				<key>CFBundleURLSchemes</key>
-				<array>
-				</array>
-			</dict>
-			<dict>
-				<key>CFBundleTypeRole</key>
-				<string>Editor</string>
-				<key>CFBundleURLSchemes</key>
-				<array>
-					<string>tempApp</string>
-				</array>
-			</dict>
-		</array>
-       	<key>naverConsumerKey</key>
-		<string>UnDNnPgR2NApCAy9fEij</string>
-		<key>naverConsumerSecret</key>
-		<string>2f_AfGbqOV</string>
-		<key>naverServiceAppName</key>
-		<string>naengmehchu</string>
-		<key>naverServiceAppUrlScheme</key>
-		<string>naengmehchu</string>
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleTypeRole</key>
+                <string>Editor</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>naengmehchu</string>
+                </array>
+            </dict>
+        </array>
+
+        <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>naversearchapp</string>
+            <string>naversearchthirdlogin</string>
+        </array>
+        <key>naverServiceAppUrlScheme</key>
+        <string>naengmehchu</string>
+        <key>naverConsumerKey</key>
+        <string>UnDNnPgR2NApCAy9fEij</string>
+        <key>naverConsumerSecret</key>
+        <string>2f_AfGbqOV</string>
+        <key>naverServiceAppName</key>
+        <string>naengmehchu</string>
+        <key>NSAppTransportSecurity</key>
+        <dict>
+           <key>NSAllowsArbitraryLoads</key>
+           <true/>
+           <key>NSExceptionDomains</key>
+           <dict>
+              <key>naver.com</key>
+              <dict>
+                 <key>NSExceptionRequiresForwardSecrecy</key>
+                 <false/>
+                 <key>NSIncludesSubdomains</key>
+                 <true/>
+              </dict>
+              <key>naver.net</key>
+              <dict>
+                 <key>NSExceptionRequiresForwardSecrecy</key>
+                 <false/>
+                 <key>NSIncludesSubdomains</key>
+                 <true/>
+              </dict>
+           </dict>
+        </dict>
 	</dict>
 
 </plist>

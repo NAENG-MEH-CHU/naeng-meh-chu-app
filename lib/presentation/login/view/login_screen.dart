@@ -1,12 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../../main.dart';
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isLogin = false;
+  String? accessToken;
+  String? expiresAt;
+  String? tokenType;
+  String? name;
+  String? refreshToken;
+
+  void _showSnackError(String error) {
+    snackBarKey.currentState?.showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(error.toString()),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +73,9 @@ class LoginScreen extends StatelessWidget {
               text: '구글로 시작하기',
             ),
             LoginButton(
-              onPressed: () {},
+              onPressed: () {
+                buttonLoginPressed();
+              },
               backgroundColor: NaengMehChuThemeColor.naverColor,
               svgPicture: SvgPicture.asset(
                 'assets/icon/ic_naver.svg',
@@ -64,5 +90,17 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> buttonLoginPressed() async {
+    try {
+      final NaverLoginResult res = await FlutterNaverLogin.logIn();
+      setState(() {
+        name = res.account.nickname;
+        isLogin = true;
+      });
+    } catch (error) {
+      _showSnackError(error.toString());
+    }
   }
 }
