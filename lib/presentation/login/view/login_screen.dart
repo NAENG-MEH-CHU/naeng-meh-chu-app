@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 
 import '../../../main.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
+const storage = FlutterSecureStorage();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -62,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 16.0,
             ),
             LoginButton(
-              onPressed: () {},
+              onPressed: () {
+              },
               borderSide: const BorderSide(
                   width: 1.0, color: NaengMehChuThemeColor.gray2),
               svgPicture: SvgPicture.asset(
@@ -95,12 +101,24 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> buttonLoginPressed() async {
     try {
       final NaverLoginResult res = await FlutterNaverLogin.logIn();
+      final NaverAccessToken token = await FlutterNaverLogin.currentAccessToken;
       setState(() {
         name = res.account.nickname;
+        accessToken = token.accessToken;
         isLogin = true;
       });
     } catch (error) {
       _showSnackError(error.toString());
     }
+  }
+
+  Future<void> googleLogin() async {
+    final GoogleSignInAccount? googleSignInAccount =
+    await googleSignIn.signIn();
+
+    final GoogleSignInAuthentication googleSignInAuthentication =
+    await googleSignInAccount!.authentication;
+
+    print("구글 액세스 토큰 ${googleSignInAuthentication.accessToken}");
   }
 }
