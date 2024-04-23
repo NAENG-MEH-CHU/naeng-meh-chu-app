@@ -43,6 +43,11 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.0
+  flutter_naver_login: ^1.8.0
+  google_sign_in: ^6.2.1
+  flutter_secure_storage: ^4.2.1
+  firebase_core: ^2.29.0
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +87,7 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
-  # example:
+  # mju:
   fonts:
     - family: NotoSansKR
       fonts:
