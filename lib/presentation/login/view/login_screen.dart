@@ -12,6 +12,7 @@ import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_screen.dart';
 
 import '../../../main.dart';
 
@@ -163,6 +164,13 @@ class _LoginScreenState extends State<LoginScreen> {
       if (idToken == null) {
         throw Exception("Missing ID token");
       }
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SignUpScreen(),
+        ),
+      );
     } catch (error) {
       print('Error during Google Sign-In: $error');
     }
@@ -294,6 +302,4 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleSignOut() => _googleSignIn.disconnect();
-
-
 }
