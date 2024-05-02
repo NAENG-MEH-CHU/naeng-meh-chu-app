@@ -7,7 +7,7 @@ PODS:
     - AppAuth/Core
   - Firebase/CoreOnly (10.24.0):
     - FirebaseCore (= 10.24.0)
-  - firebase_core (2.30.0):
+  - firebase_core (2.30.1):
     - Firebase/CoreOnly (= 10.24.0)
     - Flutter
   - FirebaseCore (10.24.0):
@@ -97,7 +97,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: 182c5b88630569df5acb672720534756c29b3358
   Firebase: 91fefd38712feb9186ea8996af6cbdef41473442
-  firebase_core: 66b99b4fb4e5d7cc4e88d4c195fe986681f3466a
+  firebase_core: 7f1e1156934d0da3be260174812842df9420e4ab
   FirebaseCore: 11dc8a16dfb7c5e3c3f45ba0e191a33ac4f50894
   FirebaseCoreInternal: bcb5acffd4ea05e12a783ecf835f2210ce3dc6af
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
+import 'dart:convert' as convert;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -145,9 +145,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> googleSignIn() async {
     try {
-      await _googleSignIn.signIn();
+      await _googleSignIn.signIn(); // Google Sign-In 실행
+
+      // 현재 사용자의 인증 헤더 가져오기
+      final GoogleSignInAccount? user = _googleSignIn.currentUser;
+      if (user == null) {
+        throw Exception("Google Sign-In failed");
+      }
+
+      // 인증 토큰 가져오기
+      final Map<String, String> authHeaders = await user.authHeaders;
+      print(authHeaders);
+
+      final String? idToken = authHeaders['Authorization'];
+      print(idToken);
+
+      if (idToken == null) {
+        throw Exception("Missing ID token");
+      }
     } catch (error) {
-      print(error);
+      print('Error during Google Sign-In: $error');
     }
   }
 
@@ -157,6 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         name = res.account.nickname;
         isLogin = true;
+        buttonTokenPressed();
       });
     } catch (error) {
       _showSnackError(error.toString());
@@ -170,6 +188,9 @@ class _LoginScreenState extends State<LoginScreen> {
         refreshToken = res.refreshToken;
         accessToken = res.accessToken;
         tokenType = res.tokenType;
+        print(refreshToken);
+        print(accessToken);
+        print(tokenType);
       });
     } catch (error) {
       _showSnackError(error.toString());
@@ -231,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     final Map<String, dynamic> data =
-        json.decode(response.body) as Map<String, dynamic>;
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
     final String? namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
@@ -273,4 +294,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleSignOut() => _googleSignIn.disconnect();
+
+
 }
