@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
 
 class SignUpGender extends ConsumerStatefulWidget {
   const SignUpGender({super.key});
@@ -17,11 +18,15 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
   void handleRadioValueChanged(int? value) {
     setState(() {
       radioValue = value!;
+      ref.read(signUpMemberProfileProvider.notifier).updateGender(radioValue == 1 ? '남자' : '여자');
+      print(ref.read(signUpMemberProfileProvider).gender);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(ref.read(signUpMemberProfileProvider).gender);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,7 +41,13 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
               const SizedBox(
                 width: 6,
               ),
-              SvgPicture.asset('assets/icon/ic_check.svg'),
+              SvgPicture.asset(
+                'assets/icon/ic_check.svg',
+                colorFilter: ref.watch(signUpMemberProfileProvider).gender == null
+                    ? null
+                    : const ColorFilter.mode(
+                        NaengMehChuThemeColor.pink, BlendMode.srcIn),
+              ),
             ],
           ),
         ),
@@ -44,7 +55,7 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Radio(
-              value: 0,
+              value: 1,
               groupValue: radioValue,
               onChanged: handleRadioValueChanged,
               activeColor: NaengMehChuThemeColor.pink,
@@ -56,7 +67,7 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
               style: NaengMehChuThemeTextStyle.blackMedium12,
             ),
             Radio(
-              value: 1,
+              value: 2,
               groupValue: radioValue,
               onChanged: handleRadioValueChanged,
               activeColor: NaengMehChuThemeColor.pink,
