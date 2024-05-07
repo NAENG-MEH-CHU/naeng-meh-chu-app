@@ -6,19 +6,38 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
   MemberProfileNotifier() : super(MemberProfile());
 
   void updateProfileImage(XFile profileImage) {
-    state = state.copyWith(profileImage: profileImage);
+    state = state.copyWith(
+      profileImage: profileImage,
+      nickname: state.nickname,
+      gender: state.gender,
+      age: state.age,
+    );
   }
 
   void updateNickname(String nickname) {
-    state = state.copyWith(nickname: nickname);
+    state = state.copyWith(
+      profileImage: state.profileImage,
+      nickname: nickname,
+      gender: state.gender,
+      age: state.age,
+    );
   }
 
   void updateGender(String gender) {
-    print(gender);
-    state = state.copyWith(gender: gender);
+    state = state.copyWith(
+      profileImage: state.profileImage,
+      nickname: state.nickname,
+      gender: gender,
+      age: state.age,
+    );
   }
 
-  void updateAge(int age) {
-    state = state.copyWith(age: age);
+  void updateAge(String age) {
+    state = state.copyWith(
+      profileImage: state.profileImage,
+      nickname: state.nickname,
+      gender: state.gender,
+      age: age,
+    );
   }
 }

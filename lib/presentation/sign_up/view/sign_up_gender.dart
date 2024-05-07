@@ -18,15 +18,14 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
   void handleRadioValueChanged(int? value) {
     setState(() {
       radioValue = value!;
-      ref.read(signUpMemberProfileProvider.notifier).updateGender(radioValue == 1 ? '남자' : '여자');
-      print(ref.read(signUpMemberProfileProvider).gender);
+      ref
+          .read(signUpMemberProfileProvider.notifier)
+          .updateGender(radioValue == 1 ? '남자' : '여자');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print(ref.read(signUpMemberProfileProvider).gender);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,10 +42,11 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
               ),
               SvgPicture.asset(
                 'assets/icon/ic_check.svg',
-                colorFilter: ref.watch(signUpMemberProfileProvider).gender == null
-                    ? null
-                    : const ColorFilter.mode(
-                        NaengMehChuThemeColor.pink, BlendMode.srcIn),
+                colorFilter:
+                    ref.watch(signUpMemberProfileProvider).gender == null
+                        ? null
+                        : const ColorFilter.mode(
+                            NaengMehChuThemeColor.pink, BlendMode.srcIn),
               ),
             ],
           ),

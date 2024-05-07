@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:naeng_meh_chu/core/image_picker/naeng_meh_chu_image_picker.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
 
 import '../../../core/picture/naeng_meh_chu_picture_circle.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
@@ -21,6 +24,9 @@ class _SignUpProfileState extends ConsumerState<SignUpProfile> {
       if (value != null) {
         setState(() {
           file = value;
+          ref
+              .read(signUpMemberProfileProvider.notifier)
+              .updateProfileImage(value);
         });
       }
     });
@@ -28,6 +34,8 @@ class _SignUpProfileState extends ConsumerState<SignUpProfile> {
 
   @override
   Widget build(BuildContext context) {
+    file = ref.read(signUpMemberProfileProvider).profileImage;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,12 +49,23 @@ class _SignUpProfileState extends ConsumerState<SignUpProfile> {
             child: Stack(
               alignment: Alignment.bottomRight,
               children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: NaengMehChuPictureCircle(
-                    size: 100,
-                    asset: "assets/icon/ic_profile.svg",
-                  ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: (file == null)
+                      ? const NaengMehChuPictureCircle(
+                          size: 100,
+                          asset: "assets/icon/ic_profile.svg",
+                        )
+                      : ClipOval(
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Image.file(
+                              File(file!.path),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                 ),
                 GestureDetector(
                   onTap: () {

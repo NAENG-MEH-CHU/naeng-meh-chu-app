@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/theme/naeng_meh_chu_theme_color.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
+import '../view_model/sign_up_provider.dart';
 
 class SignUpAge extends ConsumerStatefulWidget {
   const SignUpAge({super.key});
@@ -12,7 +14,15 @@ class SignUpAge extends ConsumerStatefulWidget {
   ConsumerState createState() => _SignUpAgeState();
 }
 
-const List<String> list = <String>['10대', '20대', '30대', '40대', '50대', '60대', '70대 이상'];
+const List<String> list = <String>[
+  '10대',
+  '20대',
+  '30대',
+  '40대',
+  '50대',
+  '60대',
+  '70대 이상'
+];
 
 class _SignUpAgeState extends ConsumerState<SignUpAge> {
   String dropdownValue = list.first;
@@ -33,7 +43,13 @@ class _SignUpAgeState extends ConsumerState<SignUpAge> {
               const SizedBox(
                 width: 6,
               ),
-              SvgPicture.asset('assets/icon/ic_check.svg'),
+              SvgPicture.asset(
+                'assets/icon/ic_check.svg',
+                colorFilter: ref.watch(signUpMemberProfileProvider).age == null
+                    ? null
+                    : const ColorFilter.mode(
+                        NaengMehChuThemeColor.pink, BlendMode.srcIn),
+              ),
             ],
           ),
         ),
@@ -41,6 +57,7 @@ class _SignUpAgeState extends ConsumerState<SignUpAge> {
             onSelected: (String? value) {
               setState(() {
                 dropdownValue = value!;
+                ref.read(signUpMemberProfileProvider.notifier).updateAge(value);
               });
             },
             hintText: '선택',

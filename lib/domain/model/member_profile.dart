@@ -4,7 +4,7 @@ class MemberProfile {
   final XFile? profileImage;
   final String? nickname;
   final String? gender;
-  final int? age;
+  final String? age;
 
   MemberProfile({
     this.profileImage,
@@ -17,7 +17,7 @@ class MemberProfile {
     XFile? profileImage,
     String? nickname,
     String? gender,
-    int? age,
+    String? age,
   }) {
     return MemberProfile(
       profileImage: profileImage,
