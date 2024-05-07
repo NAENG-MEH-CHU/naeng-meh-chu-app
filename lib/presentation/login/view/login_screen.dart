@@ -164,7 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
       if (idToken == null) {
         throw Exception("Missing ID token");
       }
-
       Navigator.push(
         context,
         MaterialPageRoute(

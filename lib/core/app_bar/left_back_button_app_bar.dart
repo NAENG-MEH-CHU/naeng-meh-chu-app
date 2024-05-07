@@ -9,11 +9,14 @@ class LeftBackButtonAppBar extends StatelessWidget implements PreferredSizeWidge
   Widget build(BuildContext context) {
     return PrimaryAppBar(
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
         icon: SvgPicture.asset('assets/icon/ic_left.svg'),
-        padding: EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(18.0),
       ),
       title: '회원가입',
+      centerTitle: true,
     );
   }
 

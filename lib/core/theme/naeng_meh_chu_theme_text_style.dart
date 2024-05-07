@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 
 class NaengMehChuThemeTextStyle {
+  static const TextStyle blackMedium12 = TextStyle(
+    color: NaengMehChuThemeColor.black,
+    fontSize: 12,
+  );
+
   static const TextStyle blackMedium15 = TextStyle(
     color: NaengMehChuThemeColor.black,
     fontSize: 15,
