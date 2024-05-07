@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:naeng_meh_chu/core/image_picker/naeng_meh_chu_image_picker.dart';
 
 import '../../../core/picture/naeng_meh_chu_picture_circle.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
@@ -12,6 +14,18 @@ class SignUpProfile extends ConsumerStatefulWidget {
 }
 
 class _SignUpProfileState extends ConsumerState<SignUpProfile> {
+  XFile? file;
+
+  void _showActionSheet(BuildContext context) {
+    NaengMehChuImagePicker.showActionSheet(context, (value) {
+      if (value != null) {
+        setState(() {
+          file = value;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +49,9 @@ class _SignUpProfileState extends ConsumerState<SignUpProfile> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    _showActionSheet(context);
+                  },
                   child: const NaengMehChuPictureCircle(
                     size: 39,
                     asset: "assets/icon/ic_camera.svg",

@@ -23,6 +23,11 @@ class NaengMehChuThemeTextStyle {
     fontSize: 11,
   );
 
+  static const TextStyle whiteMedium15 = TextStyle(
+    color: NaengMehChuThemeColor.white,
+    fontSize: 15,
+  );
+
   static const TextStyle pinkMedium18 = TextStyle(
     color: NaengMehChuThemeColor.pink,
     fontSize: 18,

@@ -94,5 +94,9 @@
 	<string>naengmehchu</string>
 	<key>naverServiceAppUrlScheme</key>
 	<string>naengmehchu</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Can we access your photos?</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Can we use your camera?</string>
 </dict>
 </plist>
