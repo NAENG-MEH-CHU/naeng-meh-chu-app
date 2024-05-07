@@ -12,9 +12,9 @@ import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
-import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_screen.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
-import '../../../main.dart';
+import '../../main.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
