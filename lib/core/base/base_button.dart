@@ -6,13 +6,14 @@ abstract class BaseButton {
   double? get width;
   double? get height;
   String? get text;
+  double? get fontSize;
+  Color? get textColor;
   void Function()? get onPressed;
   bool get enabled;
   Color? get backgroundColor;
   BorderSide? get borderSide;
   Color? get borderColor;
   double? get borderRadius;
-  NaengMehChuThemeTextStyle? get textStyle;
   Widget? get buttonChild;
   double? get fontPadding;
 }

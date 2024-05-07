@@ -16,14 +16,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const LoginScreen(),
-        theme: ThemeData(
-          fontFamily: 'NotoSansKR',
-          scaffoldBackgroundColor: NaengMehChuThemeColor.white,
-          textSelectionTheme: const TextSelectionThemeData(
-            cursorColor: NaengMehChuThemeColor.black,
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: const LoginScreen(),
+          theme: ThemeData(
+            fontFamily: 'NotoSansKR',
+            scaffoldBackgroundColor: NaengMehChuThemeColor.white,
+            textSelectionTheme: const TextSelectionThemeData(
+              cursorColor: NaengMehChuThemeColor.black,
+            ),
           ),
         ),
       ),

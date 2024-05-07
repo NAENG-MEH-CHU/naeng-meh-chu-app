@@ -13,6 +13,10 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
   final String? text;
   @override
+  final Color? textColor;
+  @override
+  final double? fontSize;
+  @override
   final VoidCallback? onPressed;
   @override
   final bool enabled;
@@ -25,8 +29,6 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
   final double? borderRadius;
   @override
-  final NaengMehChuThemeTextStyle? textStyle;
-  @override
   final Widget? buttonChild;
   @override
   final double? fontPadding;
@@ -36,13 +38,14 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       this.width,
       this.height,
       this.text,
+      this.fontSize,
+      this.textColor,
       this.onPressed,
       required this.enabled,
       this.backgroundColor,
       this.borderSide,
       this.borderColor,
       this.borderRadius,
-      this.textStyle,
       this.buttonChild,
       this.fontPadding});
 
@@ -56,12 +59,26 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: borderSide ?? BorderSide.none,
-                      borderRadius:
-                          BorderRadius.circular(borderRadius ?? borderRadius!),
+                      borderRadius: borderRadius == null
+                          ? BorderRadius.circular(8.0)
+                          : BorderRadius.circular(borderRadius!),
                     ),
                     color: backgroundColor ?? NaengMehChuThemeColor.white),
                 width: width ?? double.infinity,
-                child: buttonChild ?? Container(),
+                child: buttonChild == null
+                    ? Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
+                        child: Text(
+                          text!,
+                          style: TextStyle(
+                            color: textColor,
+                            fontSize: fontSize,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    : buttonChild!,
               ),
             ),
           )

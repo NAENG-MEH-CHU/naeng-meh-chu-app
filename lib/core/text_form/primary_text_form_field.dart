@@ -50,13 +50,13 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextFormField 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: const BorderSide(
-              // color: NaengMehChuThemeColor.gray1,
+              color: NaengMehChuThemeColor.gray1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: const BorderSide(
-              color: NaengMehChuThemeColor.gray1,
+              color: NaengMehChuThemeColor.pink,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
