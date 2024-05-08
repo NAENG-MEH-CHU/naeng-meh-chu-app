@@ -3,7 +3,25 @@ import 'package:image_picker/image_picker.dart';
 import 'package:naeng_meh_chu/domain/model/member_profile.dart';
 
 class MemberProfileNotifier extends StateNotifier<MemberProfile> {
-  MemberProfileNotifier() : super(MemberProfile());
+  MemberProfileNotifier() : super(MemberProfile(isComplete: false));
+
+  bool _isMemberProfileComplete = false;
+
+  bool get isMemberProfileComplete => _isMemberProfileComplete;
+
+  void _checkIfComplete() {
+    _isMemberProfileComplete = state.profileImage != null &&
+        state.nickname != null &&
+        state.nickname!.isNotEmpty &&
+        state.gender != null &&
+        state.age != null;
+    state = state.copyWith(
+        profileImage: state.profileImage,
+        nickname: state.nickname,
+        gender: state.gender,
+        age: state.age,
+        isComplete: _isMemberProfileComplete);
+  }
 
   void updateProfileImage(XFile profileImage) {
     state = state.copyWith(
@@ -11,7 +29,9 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
       nickname: state.nickname,
       gender: state.gender,
       age: state.age,
+      isComplete: state.isComplete,
     );
+    _checkIfComplete();
   }
 
   void updateNickname(String nickname) {
@@ -20,7 +40,9 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
       nickname: nickname,
       gender: state.gender,
       age: state.age,
+      isComplete: state.isComplete,
     );
+    _checkIfComplete();
   }
 
   void updateGender(String gender) {
@@ -29,7 +51,9 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
       nickname: state.nickname,
       gender: gender,
       age: state.age,
+      isComplete: state.isComplete,
     );
+    _checkIfComplete();
   }
 
   void updateAge(String age) {
@@ -38,6 +62,8 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
       nickname: state.nickname,
       gender: state.gender,
       age: age,
+      isComplete: state.isComplete,
     );
+    _checkIfComplete();
   }
 }

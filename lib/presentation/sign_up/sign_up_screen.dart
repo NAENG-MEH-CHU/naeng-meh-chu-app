@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_first_profile.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
 
 import '../../core/button/primary_button.dart';
 import '../../core/theme/naeng_meh_chu_theme_color.dart';
@@ -28,7 +29,7 @@ class SignUpScreen extends ConsumerWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
-              child: PinkButton(onPressed: () {}, enabled: true, text: '다음'),
+              child: PinkButton(onPressed: () {}, enabled: ref.watch(signUpMemberProfileProvider).isComplete, text: '다음'),
             )
           ],
         ),
