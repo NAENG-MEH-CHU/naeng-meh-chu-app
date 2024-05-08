@@ -10,8 +10,7 @@ class MemberProfileNotifier extends StateNotifier<MemberProfile> {
   bool get isMemberProfileComplete => _isMemberProfileComplete;
 
   void _checkIfComplete() {
-    _isMemberProfileComplete = state.profileImage != null &&
-        state.nickname != null &&
+    _isMemberProfileComplete = state.nickname != null &&
         state.nickname!.isNotEmpty &&
         state.gender != null &&
         state.age != null;

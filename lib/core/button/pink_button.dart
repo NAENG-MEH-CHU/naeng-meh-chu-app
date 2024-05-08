@@ -19,7 +19,7 @@ class PinkButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
       buttonChild: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0 ),
+        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: const Text(
           '다음',
           style: TextStyle(
