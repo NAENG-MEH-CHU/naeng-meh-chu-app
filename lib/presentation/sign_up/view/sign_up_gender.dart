@@ -26,6 +26,12 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
 
   @override
   Widget build(BuildContext context) {
+    radioValue = ref.read(signUpMemberProfileProvider).gender == '남자'
+        ? 1
+        : ref.read(signUpMemberProfileProvider).gender == '여자'
+            ? 2
+            : 0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

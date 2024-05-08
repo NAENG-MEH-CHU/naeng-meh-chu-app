@@ -37,7 +37,7 @@ class SignUpNickname extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: PrimaryTextFormField(
-            initialValue: '',
+            initialValue: ref.watch(signUpMemberProfileProvider).nickname,
             maxLength: 5,
             maxLines: 1,
             minLines: 1,

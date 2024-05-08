@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/button/primary_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 
-class PinkButton extends ConsumerWidget {
+class WhiteButton extends ConsumerWidget {
   final String text;
   final VoidCallback onPressed;
   final bool enabled;
 
-  const PinkButton({
+  const WhiteButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -23,7 +23,7 @@ class PinkButton extends ConsumerWidget {
         child: Text(
           text,
           style: const TextStyle(
-            color: NaengMehChuThemeColor.white,
+            color: NaengMehChuThemeColor.pink,
             fontSize: 15,
           ),
           textAlign: TextAlign.center,
@@ -32,10 +32,8 @@ class PinkButton extends ConsumerWidget {
       onPressed: enabled ? onPressed : null,
       enabled: enabled,
       borderRadius: 12.0,
-      backgroundColor:
-          enabled ? NaengMehChuThemeColor.pink : NaengMehChuThemeColor.gray2,
-      borderColor: NaengMehChuThemeColor.white,
-      textColor: NaengMehChuThemeColor.white,
+      backgroundColor: NaengMehChuThemeColor.white,
+      borderColor: NaengMehChuThemeColor.pink,
     );
   }
 }

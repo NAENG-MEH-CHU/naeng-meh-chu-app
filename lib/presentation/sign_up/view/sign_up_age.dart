@@ -25,10 +25,12 @@ const List<String> list = <String>[
 ];
 
 class _SignUpAgeState extends ConsumerState<SignUpAge> {
-  String dropdownValue = list.first;
+  String dropdownValue = '';
 
   @override
   Widget build(BuildContext context) {
+    print(dropdownValue);
+    print(ref.read(signUpMemberProfileProvider).age);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -60,6 +62,7 @@ class _SignUpAgeState extends ConsumerState<SignUpAge> {
                 ref.read(signUpMemberProfileProvider.notifier).updateAge(value);
               });
             },
+            initialSelection: ref.read(signUpMemberProfileProvider).age,
             hintText: '선택',
             dropdownMenuEntries:
                 list.map<DropdownMenuEntry<String>>((String value) {
