@@ -23,7 +23,7 @@ class WhiteButton extends ConsumerWidget {
         child: Text(
           text,
           style: const TextStyle(
-            color: NaengMehChuThemeColor.pink,
+            color: NaengMehChuThemeColor.pink1,
             fontSize: 15,
           ),
           textAlign: TextAlign.center,
@@ -33,7 +33,7 @@ class WhiteButton extends ConsumerWidget {
       enabled: enabled,
       borderRadius: 12.0,
       backgroundColor: NaengMehChuThemeColor.white,
-      borderColor: NaengMehChuThemeColor.pink,
+      borderColor: NaengMehChuThemeColor.pink1,
     );
   }
 }

@@ -52,7 +52,7 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
                     ref.watch(signUpMemberProfileProvider).gender == null
                         ? null
                         : const ColorFilter.mode(
-                            NaengMehChuThemeColor.pink, BlendMode.srcIn),
+                            NaengMehChuThemeColor.pink1, BlendMode.srcIn),
               ),
             ],
           ),
@@ -64,9 +64,9 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
               value: 1,
               groupValue: radioValue,
               onChanged: handleRadioValueChanged,
-              activeColor: NaengMehChuThemeColor.pink,
+              activeColor: NaengMehChuThemeColor.pink1,
               fillColor: MaterialStateColor.resolveWith(
-                  (states) => NaengMehChuThemeColor.pink),
+                  (states) => NaengMehChuThemeColor.pink1),
             ),
             const Text(
               '남자',
@@ -76,9 +76,9 @@ class _SignUpGenderState extends ConsumerState<SignUpGender> {
               value: 2,
               groupValue: radioValue,
               onChanged: handleRadioValueChanged,
-              activeColor: NaengMehChuThemeColor.pink,
+              activeColor: NaengMehChuThemeColor.pink1,
               fillColor: MaterialStateColor.resolveWith(
-                  (states) => NaengMehChuThemeColor.pink),
+                  (states) => NaengMehChuThemeColor.pink1),
             ),
             const Text(
               '여자',

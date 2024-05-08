@@ -30,7 +30,7 @@ class SignUpNickname extends ConsumerWidget {
               colorFilter: (nickname == null || nickname.isEmpty)
                   ? null
                   : const ColorFilter.mode(
-                      NaengMehChuThemeColor.pink, BlendMode.srcIn),
+                      NaengMehChuThemeColor.pink1, BlendMode.srcIn),
             ),
           ],
         ),

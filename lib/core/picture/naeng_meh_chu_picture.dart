@@ -13,7 +13,7 @@ class NaengMehChuPicture extends ConsumerWidget {
       width: double.infinity,
       height: height,
       decoration: ShapeDecoration(
-        color: NaengMehChuThemeColor.pink,
+        color: NaengMehChuThemeColor.pink1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

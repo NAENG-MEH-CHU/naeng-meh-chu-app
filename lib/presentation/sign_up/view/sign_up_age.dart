@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,8 +28,6 @@ class _SignUpAgeState extends ConsumerState<SignUpAge> {
 
   @override
   Widget build(BuildContext context) {
-    print(dropdownValue);
-    print(ref.read(signUpMemberProfileProvider).age);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,7 +47,7 @@ class _SignUpAgeState extends ConsumerState<SignUpAge> {
                 colorFilter: ref.watch(signUpMemberProfileProvider).age == null
                     ? null
                     : const ColorFilter.mode(
-                        NaengMehChuThemeColor.pink, BlendMode.srcIn),
+                        NaengMehChuThemeColor.pink1, BlendMode.srcIn),
               ),
             ],
           ),

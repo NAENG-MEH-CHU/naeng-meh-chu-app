@@ -25,19 +25,17 @@ class SignUpScreen extends ConsumerWidget {
         },
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    nowPage == 'first'
-                        ? const SignUpFirstProfile()
-                        : const SignUpSecondMotivation()
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: nowPage == 'first'
+                      ? const SignUpFirstProfile()
+                      : const SignUpSecondMotivation()),
             ),
           ),
           Column(

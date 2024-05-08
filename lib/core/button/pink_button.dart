@@ -33,7 +33,7 @@ class PinkButton extends ConsumerWidget {
       enabled: enabled,
       borderRadius: 12.0,
       backgroundColor:
-          enabled ? NaengMehChuThemeColor.pink : NaengMehChuThemeColor.gray2,
+          enabled ? NaengMehChuThemeColor.pink1 : NaengMehChuThemeColor.gray2,
       borderColor: NaengMehChuThemeColor.white,
       textColor: NaengMehChuThemeColor.white,
     );
