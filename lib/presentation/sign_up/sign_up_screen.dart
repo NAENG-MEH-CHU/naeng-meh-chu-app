@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/button/white_button.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_finish.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_first_profile.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_second_motivation.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
@@ -34,9 +33,20 @@ class SignUpScreen extends ConsumerWidget {
             child: SingleChildScrollView(
               child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: nowPage == 'first'
-                      ? const SignUpFirstProfile()
-                      : const SignUpSecondMotivation()),
+                  child: Consumer(
+                    builder: (context, ref, _) {
+                      switch (nowPage) {
+                        case 'first':
+                          return const SignUpFirstProfile();
+                        case 'second':
+                          return const SignUpSecondMotivation();
+                        case 'third':
+                          return const SignUpFinish();
+                        default:
+                          return Container();
+                      }
+                    },
+                  )),
             ),
           ),
           Column(
@@ -51,35 +61,56 @@ class SignUpScreen extends ConsumerWidget {
                       left: 16.0, right: 16.0, top: 16.0, bottom: 32.0),
                   child: Row(
                     children: [
-                      Expanded(
-                          child: Visibility(
-                        visible: nowPage != "first",
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: WhiteButton(
-                            onPressed: () {
-                              ref
-                                  .read(signUpMoveProvider.notifier)
-                                  .moveToFirstPage();
-                            },
-                            enabled: true,
-                            text: '이전',
-                          ),
-                        ),
-                      )),
+                      nowPage == 'second'
+                          ? Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 4.0),
+                                child: WhiteButton(
+                                  onPressed: () {
+                                    ref
+                                        .read(signUpMoveProvider.notifier)
+                                        .moveToFirstPage();
+                                  },
+                                  enabled: true,
+                                  text: '이전',
+                                ),
+                              ),
+                            )
+                          : Container(),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: PinkButton(
                             onPressed: () {
-                              ref
-                                  .read(signUpMoveProvider.notifier)
-                                  .moveToSecondPage();
+                              switch (nowPage) {
+                                case 'first':
+                                  ref
+                                      .read(signUpMoveProvider.notifier)
+                                      .moveToSecondPage();
+                                  break;
+
+                                case 'second':
+                                  ref
+                                      .read(signUpMoveProvider.notifier)
+                                      .moveToThirdPage();
+                                  break;
+
+                                case 'third':
+                                  ref
+                                      .read(signUpMoveProvider.notifier)
+                                      .moveToHome();
+                                  break;
+
+                                default:
+                                  throw Exception('회원가입 페이지 에러 발생');
+                              }
                             },
-                            enabled: ref
-                                .watch(signUpMemberProfileProvider)
-                                .isComplete,
-                            text: '다음',
+                            enabled: nowPage != 'first'
+                                ? ref.watch(motivationProvider).contains(true)
+                                : ref
+                                    .watch(signUpMemberProfileProvider)
+                                    .isComplete,
+                            text: nowPage != 'third' ? '다음' : '시작하기',
                           ),
                         ),
                       ),

@@ -10,4 +10,12 @@ class SignUpMoveNotifier extends StateNotifier<String> {
   void moveToSecondPage() {
     state = "second";
   }
+
+  void moveToThirdPage() {
+    state = "third";
+  }
+
+  void moveToHome() {
+    state = "home";
+  }
 }
