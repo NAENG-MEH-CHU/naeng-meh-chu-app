@@ -22,6 +22,7 @@ class SignUpScreen extends ConsumerWidget {
         onPress: () {
           Navigator.pop(context);
           ref.invalidate(signUpMemberProfileProvider);
+          ref.invalidate(signUpMoveProvider);
         },
       ),
       body: Column(

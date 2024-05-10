@@ -7,17 +7,22 @@ import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
 
 class SignUpMotivationBox extends ConsumerWidget {
   final String title;
+  final bool isChecked;
+  final Function() onPressed;
 
   const SignUpMotivationBox({
     super.key,
     required this.title,
+    required this.isChecked,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
       enabled: true,
-      backgroundColor: NaengMehChuThemeColor.white,
+      backgroundColor:
+          isChecked ? NaengMehChuThemeColor.pink3 : NaengMehChuThemeColor.white,
       borderColor: NaengMehChuThemeColor.pink1,
       buttonChild: Container(
         width: double.infinity,
@@ -32,6 +37,7 @@ class SignUpMotivationBox extends ConsumerWidget {
           textAlign: TextAlign.center,
         ),
       ),
+      onPressed: onPressed,
     );
   }
 }
