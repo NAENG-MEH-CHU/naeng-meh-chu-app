@@ -8,11 +8,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
+import '../../core/button/sign_in_button.dart';
 import '../../main.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -27,21 +27,21 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: scopes,
 );
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   // google
   GoogleSignInAccount? _currentUser;
   bool _isAuthorized = false;
   String _contactText = '';
 
   // naver
-  bool isLogin = false;
+  bool isSignIn = false;
   String? accessToken;
   String? expiresAt;
   String? tokenType;
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 16.0,
             ),
-            LoginButton(
+            SignInButton(
               onPressed: () {
                 googleSignIn();
               },
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               text: '구글로 시작하기',
             ),
-            LoginButton(
+            SignInButton(
               onPressed: () {
                 naverSignIn();
               },
@@ -178,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final NaverLoginResult res = await FlutterNaverLogin.logIn();
       setState(() {
         name = res.account.nickname;
-        isLogin = true;
+        isSignIn = true;
         buttonTokenPressed();
       });
     } catch (error) {
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       await FlutterNaverLogin.logOut();
       setState(() {
-        isLogin = false;
+        isSignIn = false;
         accessToken = null;
         tokenType = null;
         name = null;
@@ -220,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       await FlutterNaverLogin.logOutAndDeleteToken();
       setState(() {
-        isLogin = false;
+        isSignIn = false;
         accessToken = null;
         tokenType = null;
         name = null;
