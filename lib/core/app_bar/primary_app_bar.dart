@@ -33,7 +33,7 @@ class PrimaryAppBar extends StatelessWidget
       title: title != null
           ? Text(
               title!,
-              style: NaengMehChuThemeTextStyle.blackSemiBold16,
+              style: NaengMehChuThemeTextStyle.pinkMedium18,
             )
           : null,
       actions: actions,
@@ -43,6 +43,12 @@ class PrimaryAppBar extends StatelessWidget
       elevation: 0.0,
       bottomOpacity: 0.0,
       scrolledUnderElevation: 0,
+      shape: const Border(
+        bottom: BorderSide(
+          color: NaengMehChuThemeColor.gray2,
+          width: 1,
+        ),
+      ),
     );
   }
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 
 import '../base/base_button.dart';
 import '../base/bouncing.dart';
-import '../theme/naeng_meh_chu_theme_color.dart';
 
 class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
@@ -17,15 +15,15 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
   final bool enabled;
   @override
-  final Color? backgroundColor;
+  final Color? textColor;
   @override
-  final BorderSide? borderSide;
+  final Color backgroundColor;
   @override
-  final Color? borderColor;
+  final Color borderColor;
   @override
   final double? borderRadius;
   @override
-  final NaengMehChuThemeTextStyle? textStyle;
+  final double? fontSize;
   @override
   final Widget? buttonChild;
   @override
@@ -33,48 +31,97 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
 
   const PrimaryButton(
       {super.key,
-      this.width,
-      this.height,
-      this.text,
-      this.onPressed,
-      required this.enabled,
-      this.backgroundColor,
-      this.borderSide,
-      this.borderColor,
-      this.borderRadius,
-      this.textStyle,
-      this.buttonChild,
-      this.fontPadding});
+        this.width,
+        this.height,
+        this.text,
+        this.onPressed,
+        required this.enabled,
+        this.textColor,
+        required this.backgroundColor,
+        required this.borderColor,
+        this.borderRadius,
+        this.fontSize,
+        this.buttonChild,
+        this.fontPadding});
 
   @override
   Widget build(BuildContext context) {
-    return enabled
-        ? Bouncing(
-            child: GestureDetector(
-              onTap: onPressed,
-              child: Container(
-                decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: borderSide ?? BorderSide.none,
-                      borderRadius:
-                          BorderRadius.circular(borderRadius ?? borderRadius!),
-                    ),
-                    color: backgroundColor ?? NaengMehChuThemeColor.white),
-                width: width ?? double.infinity,
-                child: buttonChild ?? Container(),
+    return SizedBox(
+      width: width,
+      height: height,
+      child: enabled
+          ? Bouncing(
+        onPress: () {},
+        child: TextButton(
+          onPressed: onPressed,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(backgroundColor),
+            side: MaterialStateProperty.resolveWith(
+                  (states) {
+                return BorderSide(
+                  color: borderColor,
+                  width: 1.0,
+                );
+              },
+            ),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: borderRadius == null
+                    ? BorderRadius.circular(8.0)
+                    : BorderRadius.circular(borderRadius!),
               ),
             ),
+          ),
+          child: buttonChild == null
+              ? Padding(
+            padding:
+            EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
+            child: Text(
+              text!,
+              style: TextStyle(
+                color: textColor,
+                fontSize: fontSize,
+              ),
+              textAlign: TextAlign.center,
+            ),
           )
-        : Container(
-            decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  side: borderSide ?? const BorderSide(width: 0),
-                  borderRadius:
-                      BorderRadius.circular(borderRadius ?? borderRadius!),
-                ),
-                color: backgroundColor ?? NaengMehChuThemeColor.white),
-            width: width ?? double.infinity,
-            child: buttonChild ?? Container(),
-          );
+              : buttonChild!,
+        ),
+      )
+          : TextButton(
+        onPressed: null,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(backgroundColor),
+          side: MaterialStateProperty.resolveWith(
+                (states) {
+              return BorderSide(
+                color: borderColor,
+                width: 1.0,
+              );
+            },
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: borderRadius == null
+                  ? BorderRadius.circular(8.0)
+                  : BorderRadius.circular(borderRadius!),
+            ),
+          ),
+        ),
+        child: buttonChild == null
+            ? Padding(
+          padding:
+          EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
+          child: Text(
+            text!,
+            style: TextStyle(
+              color: textColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        )
+            : buttonChild!,
+      ),
+    );
   }
 }

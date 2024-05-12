@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
+import 'dart:convert' as convert;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +8,12 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/login_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
-import '../../../main.dart';
+import '../../main.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
@@ -84,7 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -145,9 +144,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> googleSignIn() async {
     try {
-      await _googleSignIn.signIn();
+      await _googleSignIn.signIn(); // Google Sign-In 실행
+
+      // 현재 사용자의 인증 헤더 가져오기
+      final GoogleSignInAccount? user = _googleSignIn.currentUser;
+      if (user == null) {
+        throw Exception("Google Sign-In failed");
+      }
+
+      // 인증 토큰 가져오기
+      final Map<String, String> authHeaders = await user.authHeaders;
+      print(authHeaders);
+
+      final String? idToken = authHeaders['Authorization'];
+      print(idToken);
+
+      if (idToken == null) {
+        throw Exception("Missing ID token");
+      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SignUpScreen(),
+        ),
+      );
     } catch (error) {
-      print(error);
+      print('Error during Google Sign-In: $error');
     }
   }
 
@@ -157,6 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         name = res.account.nickname;
         isLogin = true;
+        buttonTokenPressed();
       });
     } catch (error) {
       _showSnackError(error.toString());
@@ -170,6 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
         refreshToken = res.refreshToken;
         accessToken = res.accessToken;
         tokenType = res.tokenType;
+        print(refreshToken);
+        print(accessToken);
+        print(tokenType);
       });
     } catch (error) {
       _showSnackError(error.toString());
@@ -231,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     final Map<String, dynamic> data =
-        json.decode(response.body) as Map<String, dynamic>;
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
     final String? namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
