@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert' as convert;
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -162,12 +164,32 @@ class _SignInScreenState extends State<SignInScreen> {
       if (idToken == null) {
         throw Exception("Missing ID token");
       }
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SignUpScreen(),
-        ),
+
+      var url = Uri.http(
+        '${dotenv.env['APP_URL']}',
+        '/api/auth/login/google',
       );
+
+      var response = await http.post(
+        url,
+        headers: {
+          'Content-type': 'application/json',
+          HttpHeaders.authorizationHeader: idToken
+        },
+      );
+      if (response.statusCode == 201) {
+        var jsonResponse =
+            convert.jsonDecode(response.body) as Map<String, dynamic>;
+        print(jsonResponse['token']);
+        if (jsonResponse['isNew'] == null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SignUpScreen(),
+            ),
+          );
+        }
+      }
     } catch (error) {
       print('Error during Google Sign-In: $error');
     }
