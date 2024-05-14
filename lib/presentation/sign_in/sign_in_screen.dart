@@ -177,11 +177,12 @@ class _SignInScreenState extends State<SignInScreen> {
           HttpHeaders.authorizationHeader: idToken
         },
       );
+      print(response.body);
+
       if (response.statusCode == 201) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
-        print(jsonResponse['token']);
-        if (jsonResponse['isNew'] == null) {
+        if (jsonResponse['new'] == false) {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -198,6 +199,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> naverSignIn() async {
     try {
       final NaverLoginResult res = await FlutterNaverLogin.logIn();
+
       setState(() {
         name = res.account.nickname;
         isSignIn = true;
@@ -215,10 +217,34 @@ class _SignInScreenState extends State<SignInScreen> {
         refreshToken = res.refreshToken;
         accessToken = res.accessToken;
         tokenType = res.tokenType;
-        print(refreshToken);
-        print(accessToken);
-        print(tokenType);
       });
+
+      var url = Uri.http(
+        '${dotenv.env['APP_URL']}',
+        '/api/auth/login/naver',
+      );
+
+      var response = await http.post(
+        url,
+        headers: {
+          'Content-type': 'application/json',
+          HttpHeaders.authorizationHeader: "Bearer $accessToken"
+        },
+      );
+      print(response.body);
+
+      if (response.statusCode == 201) {
+        var jsonResponse =
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
+        if (jsonResponse['new'] == false) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SignUpScreen(),
+            ),
+          );
+        }
+      }
     } catch (error) {
       _showSnackError(error.toString());
     }
