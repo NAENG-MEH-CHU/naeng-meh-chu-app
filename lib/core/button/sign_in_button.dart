@@ -5,7 +5,7 @@ import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 
 import '../theme/naeng_meh_chu_theme_text_style.dart';
 
-class LoginButton extends StatelessWidget {
+class SignInButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? backgroundColor;
   final BorderSide? borderSide;
@@ -13,7 +13,7 @@ class LoginButton extends StatelessWidget {
   final SvgPicture svgPicture;
   final String text;
 
-  const LoginButton({
+  const SignInButton({
     super.key,
     required this.onPressed,
     this.backgroundColor,
@@ -32,7 +32,7 @@ class LoginButton extends StatelessWidget {
         onPressed: onPressed,
         borderRadius: 5,
         backgroundColor: backgroundColor ?? NaengMehChuThemeColor.white,
-        borderColor: borderColor ?? NaengMehChuThemeColor.black,
+        borderColor: borderColor ?? NaengMehChuThemeColor.white,
         buttonChild: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
