@@ -23,6 +23,7 @@ class SignUpScreen extends ConsumerWidget {
           ref.invalidate(signUpMemberProfileProvider);
           ref.invalidate(signUpMoveProvider);
         },
+        title: '회원가입',
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
