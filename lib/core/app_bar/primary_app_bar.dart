@@ -12,7 +12,8 @@ class PrimaryAppBar extends StatelessWidget
       this.leadingWidth,
       this.title,
       this.actions,
-      this.centerTitle});
+      this.centerTitle,
+      this.shape});
 
   @override
   final Widget? leading;
@@ -24,6 +25,8 @@ class PrimaryAppBar extends StatelessWidget
   final List<Widget>? actions;
   @override
   final bool? centerTitle;
+  @override
+  final ShapeBorder? shape;
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +46,7 @@ class PrimaryAppBar extends StatelessWidget
       elevation: 0.0,
       bottomOpacity: 0.0,
       scrolledUnderElevation: 0,
-      shape: const Border(
-        bottom: BorderSide(
-          color: NaengMehChuThemeColor.gray2,
-          width: 1,
-        ),
-      ),
+      shape: shape,
     );
   }
 
