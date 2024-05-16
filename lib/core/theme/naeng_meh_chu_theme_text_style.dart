@@ -12,6 +12,12 @@ class NaengMehChuThemeTextStyle {
     fontSize: 14,
   );
 
+  static const TextStyle blackBold14 = TextStyle(
+    color: NaengMehChuThemeColor.black,
+    fontSize: 14,
+    fontWeight: FontWeight.w700
+  );
+
   static const TextStyle blackMedium15 = TextStyle(
     color: NaengMehChuThemeColor.black,
     fontSize: 15,
