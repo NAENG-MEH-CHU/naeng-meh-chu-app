@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
+import 'package:naeng_meh_chu/presentation/my_page/my_page_screen.dart';
+import 'package:naeng_meh_chu/presentation/recipe/recipe_screen.dart';
+import 'package:naeng_meh_chu/presentation/refrigerator/refrigerator_screen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   final int selectedIndex;
@@ -18,9 +21,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   _MainScreenState(this._selectedIndex);
 
   static const List<Widget> _widgetOptions = <Widget>[
-    // HomeScreen(),
-    // FarmclubScreen(),
-    // SearchScreen(),
+    RecipeScreen(),
+    RefrigeratorScreen(),
+    MyPageScreen(),
   ];
 
   @override
@@ -45,36 +48,36 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/image/ic_home.svg",
-              // colorFilter: ColorFilter.mode(
-              //     _selectedIndex == 0
-              //         ? FarmusThemeColor.gray1
-              //         : FarmusThemeColor.gray4,
-              //     BlendMode.srcIn),
+              "assets/icon/ic_recipe.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 0
+                      ? NaengMehChuThemeColor.pink1
+                      : NaengMehChuThemeColor.gray2,
+                  BlendMode.srcIn),
             ),
-            label: "홈",
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/image/ic_farmclub.svg",
-              // colorFilter: ColorFilter.mode(
-              //     _selectedIndex == 1
-              //         ? FarmusThemeColor.gray1
-              //         : FarmusThemeColor.gray4,
-              //     BlendMode.srcIn),
+              "assets/icon/ic_refrigerator.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 1
+                      ? NaengMehChuThemeColor.pink1
+                      : NaengMehChuThemeColor.gray2,
+                  BlendMode.srcIn),
             ),
-            label: "팜클럽",
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/image/ic_union.svg",
-              // colorFilter: ColorFilter.mode(
-              //     _selectedIndex == 3
-              //         ? FarmusThemeColor.gray1
-              //         : FarmusThemeColor.gray4,
-              //     BlendMode.srcIn),
+              "assets/icon/ic_home_person.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 2
+                      ? NaengMehChuThemeColor.pink1
+                      : NaengMehChuThemeColor.gray2,
+                  BlendMode.srcIn),
             ),
-            label: "마이페이지",
+            label: "",
           ),
         ],
         showUnselectedLabels: true,
