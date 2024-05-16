@@ -182,7 +182,7 @@ class _SignInScreenState extends State<SignInScreen> {
       if (response.statusCode == 201) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
-        if (jsonResponse['new'] == false) {
+        if (jsonResponse['new'] == true) {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -236,7 +236,7 @@ class _SignInScreenState extends State<SignInScreen> {
       if (response.statusCode == 201) {
         var jsonResponse =
         convert.jsonDecode(response.body) as Map<String, dynamic>;
-        if (jsonResponse['new'] == false) {
+        if (jsonResponse['new'] == true) {
           Navigator.push(
             context,
             MaterialPageRoute(
