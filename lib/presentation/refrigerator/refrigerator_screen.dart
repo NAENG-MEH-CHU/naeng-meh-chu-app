@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
-import 'package:naeng_meh_chu/core/button/primary_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
 
 class RefrigeratorScreen extends ConsumerWidget {
-  const RefrigeratorScreen({super.key});
+  const RefrigeratorScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -74,7 +74,27 @@ class RefrigeratorScreen extends ConsumerWidget {
                                   style: NaengMehChuThemeTextStyle.blackBold14,
                                 ),
                               ],
-                            )
+                            ),
+                            SizedBox(
+                              height: 16.0,
+                            ),
+                            Row(
+                              children: [
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -118,7 +138,8 @@ class RefrigeratorScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: SizedBox(
               width: double.infinity,
-              child: PinkButton(text: '냉장고 털기', onPressed: () {}, enabled: true),
+              child:
+                  PinkButton(text: '냉장고 털기', onPressed: () {}, enabled: true),
             ),
           )
         ],
