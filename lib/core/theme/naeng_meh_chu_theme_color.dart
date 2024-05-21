@@ -11,6 +11,7 @@ class NaengMehChuThemeColor {
   static const Color pink4 = Color(0xFFFECDD6);
   static const Color pink5 = Color(0xFFFFE4E8);
   static const Color pink6 = Color(0xFFFFF1F3);
+  static const Color pinkBackground = Color(0xFFFFF5F6);
 
   static const Color beige = Color(0xFFFFFAED);
 

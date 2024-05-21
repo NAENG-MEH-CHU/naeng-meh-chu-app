@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/presentation/food/food_screen.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
@@ -48,7 +49,14 @@ class RefrigeratorScreen extends ConsumerWidget {
                             width: 8,
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (builder) => const FoodScreen(),
+                                ),
+                              );
+                            },
                             child: SvgPicture.asset('assets/icon/ic_add.svg'),
                           ),
                         ],

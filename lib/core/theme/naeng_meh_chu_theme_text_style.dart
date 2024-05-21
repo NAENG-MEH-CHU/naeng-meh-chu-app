@@ -22,6 +22,11 @@ class NaengMehChuThemeTextStyle {
       fontSize: 14,
       fontWeight: FontWeight.w700);
 
+  static const TextStyle blackBold16 = TextStyle(
+      color: NaengMehChuThemeColor.black,
+      fontSize: 16,
+      fontWeight: FontWeight.w700);
+
   static const TextStyle blackMedium15 = TextStyle(
     color: NaengMehChuThemeColor.black,
     fontSize: 15,
@@ -41,6 +46,11 @@ class NaengMehChuThemeTextStyle {
   static const TextStyle gray2Medium10 = TextStyle(
     color: NaengMehChuThemeColor.gray2,
     fontSize: 10,
+  );
+
+  static const TextStyle gray2Medium14 = TextStyle(
+    color: NaengMehChuThemeColor.gray2,
+    fontSize: 14,
   );
 
   static const TextStyle gray2Regular11 = TextStyle(
