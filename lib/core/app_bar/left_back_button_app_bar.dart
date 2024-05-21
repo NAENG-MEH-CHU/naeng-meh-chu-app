@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 
-class LeftBackButtonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Function()? onPress;
+class LeftBackButtonAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  final Function() onPress;
+  final String title;
 
-  const LeftBackButtonAppBar({super.key, this.onPress});
+  const LeftBackButtonAppBar(
+      {super.key, required this.onPress, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class LeftBackButtonAppBar extends StatelessWidget implements PreferredSizeWidge
         icon: SvgPicture.asset('assets/icon/ic_left.svg'),
         padding: const EdgeInsets.all(18.0),
       ),
-      title: '회원가입',
+      title: title,
       centerTitle: true,
     );
   }
