@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/button/white_button.dart';
+import 'package:naeng_meh_chu/domain/repository/sign_up_repository.dart';
 import 'package:naeng_meh_chu/presentation/main/main_screen.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_finish.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_first_profile.dart';
@@ -104,6 +105,7 @@ class SignUpScreen extends ConsumerWidget {
                                   break;
 
                                 case 'third':
+                                  SignUpRepository.initializeMember();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

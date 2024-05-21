@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:convert' as convert;
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/domain/repository/sign_in_repository.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
 import '../../core/button/sign_in_button.dart';
@@ -165,31 +164,11 @@ class _SignInScreenState extends State<SignInScreen> {
         throw Exception("Missing ID token");
       }
 
-      var url = Uri.http(
-        '${dotenv.env['APP_URL']}',
-        '/api/auth/login/google',
-      );
+      final isNew = await SignInRepository.googleLogin(idToken);
 
-      var response = await http.post(
-        url,
-        headers: {
-          'Content-type': 'application/json',
-          HttpHeaders.authorizationHeader: idToken
-        },
-      );
-      print(response.body);
-
-      if (response.statusCode == 201) {
-        var jsonResponse =
-            convert.jsonDecode(response.body) as Map<String, dynamic>;
-        if (jsonResponse['new'] == true) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignUpScreen(),
-            ),
-          );
-        }
+      if (isNew == true) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => SignUpScreen()));
       }
     } catch (error) {
       print('Error during Google Sign-In: $error');
@@ -202,7 +181,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
       setState(() {
         name = res.account.nickname;
-        isSignIn = true;
+        isSignIn = false;
         buttonTokenPressed();
       });
     } catch (error) {
@@ -219,31 +198,11 @@ class _SignInScreenState extends State<SignInScreen> {
         tokenType = res.tokenType;
       });
 
-      var url = Uri.http(
-        '${dotenv.env['APP_URL']}',
-        '/api/auth/login/naver',
-      );
+      final isNew = await SignInRepository.naverLogin(res.accessToken);
 
-      var response = await http.post(
-        url,
-        headers: {
-          'Content-type': 'application/json',
-          HttpHeaders.authorizationHeader: "Bearer $accessToken"
-        },
-      );
-      print(response.body);
-
-      if (response.statusCode == 201) {
-        var jsonResponse =
-        convert.jsonDecode(response.body) as Map<String, dynamic>;
-        if (jsonResponse['new'] == true) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignUpScreen(),
-            ),
-          );
-        }
+      if (isNew == false) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => SignUpScreen()));
       }
     } catch (error) {
       _showSnackError(error.toString());

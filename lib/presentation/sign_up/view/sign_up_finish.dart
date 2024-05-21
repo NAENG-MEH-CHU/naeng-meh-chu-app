@@ -13,7 +13,7 @@ class SignUpFinish extends ConsumerWidget {
     return SafeArea(
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(.0),
+          padding: const EdgeInsets.all(0),
           child: IntrinsicHeight(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -29,7 +29,7 @@ class SignUpFinish extends ConsumerWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: Text(
-                    '푸매니저김아린님,\n가입이 완료되었어요!',
+                    '푸매니저님,\n가입이 완료되었어요!',
                     style: NaengMehChuThemeTextStyle.blackMedium20,
                     textAlign: TextAlign.center,
                   ),
