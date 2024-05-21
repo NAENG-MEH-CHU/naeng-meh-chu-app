@@ -140,29 +140,104 @@ class RefrigeratorScreen extends ConsumerWidget {
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      decoration: ShapeDecoration(
-                        color: NaengMehChuThemeColor.pink6,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                  Container(
+                    decoration: ShapeDecoration(
+                      color: NaengMehChuThemeColor.pink6,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Row(
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '냉동 보관',
+                                style: NaengMehChuThemeTextStyle.blackBold14,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 16.0,
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
                               children: [
-                                Text(
-                                  '냉동 보관',
-                                  style: NaengMehChuThemeTextStyle.blackBold14,
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -193,7 +268,8 @@ class RefrigeratorScreen extends ConsumerWidget {
       url,
       headers: {
         'Content-type': 'application/json',
-        HttpHeaders.authorizationHeader: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3ODgxMmViNi0yZjc1LTQ2ODMtOThlNS1kMzZmYjM4OTQwYzAiLCJpYXQiOjE3MTQxMTEzMzYsImV4cCI6MTcxNDExNDkzNn0.lOgHB1g4oBQo49WghoJLm76hq2F98P89PWcs37HSa0g"
+        HttpHeaders.authorizationHeader:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3ODgxMmViNi0yZjc1LTQ2ODMtOThlNS1kMzZmYjM4OTQwYzAiLCJpYXQiOjE3MTQxMTEzMzYsImV4cCI6MTcxNDExNDkzNn0.lOgHB1g4oBQo49WghoJLm76hq2F98P89PWcs37HSa0g"
       },
     );
     print(response.body);
