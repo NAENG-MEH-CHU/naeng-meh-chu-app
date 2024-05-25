@@ -10,7 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
-import 'package:naeng_meh_chu/domain/repository/sign_in_repository.dart';
+import 'package:naeng_meh_chu/data/repository/sign_in_repository.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
 import '../../core/button/sign_in_button.dart';
@@ -202,7 +202,11 @@ class _SignInScreenState extends State<SignInScreen> {
 
       if (isNew == false) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (builder) => SignUpScreen()));
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const SignUpScreen(),
+          ),
+        );
       }
     } catch (error) {
       _showSnackError(error.toString());

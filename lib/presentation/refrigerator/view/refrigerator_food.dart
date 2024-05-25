@@ -25,6 +25,9 @@ class RefrigeratorFood extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.all(32.0),
               decoration: ShapeDecoration(
+                image: const DecorationImage(
+                  image: AssetImage('assets/image/example_image.png'),
+                ),
                 color: NaengMehChuThemeColor.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
