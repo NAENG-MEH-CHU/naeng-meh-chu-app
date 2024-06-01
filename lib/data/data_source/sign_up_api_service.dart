@@ -1,10 +1,13 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/member_profile.dart';
 
 class SignUpApiService {
-  Future<MemberProfile> initializeMember() async {
+  Future<MemberProfile> initializeMember(String accessToken, MemberProfile memberProfile) async {
     try {
       var url = Uri.http(
         '${dotenv.env['APP_URL']}',
@@ -15,7 +18,7 @@ class SignUpApiService {
         url,
         headers: {
           'Content-type': 'application/json',
-          // HttpHeaders.authorizationHeader: "Bearer $accessToken"
+          HttpHeaders.authorizationHeader: "Bearer $accessToken"
         },
       );
       print(response.body);

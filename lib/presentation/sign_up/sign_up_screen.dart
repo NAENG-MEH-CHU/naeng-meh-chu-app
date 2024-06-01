@@ -105,7 +105,6 @@ class SignUpScreen extends ConsumerWidget {
                                   break;
 
                                 case 'third':
-                                  SignUpRepository.initializeMember();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
