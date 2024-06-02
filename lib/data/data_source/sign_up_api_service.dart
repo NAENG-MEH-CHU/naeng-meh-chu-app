@@ -1,22 +1,23 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
-
-import '../model/member_profile.dart';
 import 'api_client.dart';
 
 class SignUpApiService {
-  Future<String> initializeMember(String nickname, String gender,
-      String age, List<String> usingReasons) async {
+  Future<String> initializeMember(String nickname, String gender, String age,
+      List<String> usingReasons) async {
     const url = '/api/auth/initialize';
 
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
 
-    final body = jsonEncode({'nickname': nickname, 'gender': gender, 'age': age, 'usingReasons': usingReasons});
+    final body = jsonEncode({
+      'nickname': nickname,
+      'gender': gender,
+      'age': age,
+      'usingReasons': usingReasons
+    });
     ApiClient apiClient = ApiClient();
 
     final response = await apiClient.post(

@@ -10,7 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
-import 'package:naeng_meh_chu/data/repository/sign_in_repository.dart';
+import 'package:naeng_meh_chu/data/repository/member_repository.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
 import '../../core/button/sign_in_button.dart';
@@ -164,7 +164,7 @@ class _SignInScreenState extends State<SignInScreen> {
         throw Exception("Missing ID token");
       }
 
-      final isNew = await SignInRepository.googleLogin(idToken);
+      final isNew = await MemberRepository.googleLogin(idToken);
 
       if (isNew == true) {
         Navigator.push(
@@ -198,7 +198,7 @@ class _SignInScreenState extends State<SignInScreen> {
         tokenType = res.tokenType;
       });
 
-      final isNew = await SignInRepository.naverLogin(res.accessToken);
+      final isNew = await MemberRepository.naverLogin(res.accessToken);
 
       if (isNew == false) {
         Navigator.push(
