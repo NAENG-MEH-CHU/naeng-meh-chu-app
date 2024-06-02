@@ -2,7 +2,10 @@ import 'dart:convert' as convert;
 import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+
+const storage = FlutterSecureStorage();
 
 class SignInApiService {
   Future<bool?> googleSignIn(String accessToken) async {
@@ -23,7 +26,6 @@ class SignInApiService {
       if (response.statusCode == 201) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
-        print(jsonResponse);
         return jsonResponse['new'];
       }
     } catch (error) {
@@ -50,7 +52,11 @@ class SignInApiService {
       if (response.statusCode == 201) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
-        print(jsonResponse);
+        await storage.write(
+            key: "accessToken", value: jsonResponse['accessToken']);
+        await storage.write(
+            key: "refreshToken", value: jsonResponse['refreshToken']);
+
         return jsonResponse['new'];
       }
     } catch (error) {

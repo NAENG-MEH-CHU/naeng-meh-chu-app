@@ -5,29 +5,30 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/member_profile.dart';
+import 'api_client.dart';
 
 class SignUpApiService {
-  Future<MemberProfile> initializeMember(String accessToken, MemberProfile memberProfile) async {
-    try {
-      var url = Uri.http(
-        '${dotenv.env['APP_URL']}',
-        '/api/initialize',
-      );
+  Future<String> initializeMember(String nickname, String gender,
+      String age, List<String> usingReasons) async {
+    const url = '/api/auth/initialize';
 
-      var response = await http.post(
-        url,
-        headers: {
-          'Content-type': 'application/json',
-          HttpHeaders.authorizationHeader: "Bearer $accessToken"
-        },
-      );
-      print(response.body);
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
 
-      if (response.statusCode == 201) {}
-      MemberProfile memberProfile = MemberProfile(isComplete: true);
-      return memberProfile;
-    } catch (error) {
-      return MemberProfile(isComplete: false);
+    final body = jsonEncode({'nickname': nickname, 'gender': gender, 'age': age, 'usingReasons': usingReasons});
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Fail');
     }
   }
 }
