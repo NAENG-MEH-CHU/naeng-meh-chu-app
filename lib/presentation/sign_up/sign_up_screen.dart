@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/button/white_button.dart';
-import 'package:naeng_meh_chu/data/repository/member_repository.dart';
 import 'package:naeng_meh_chu/presentation/main/main_screen.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_finish.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_first_profile.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_second_motivation.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view_model/notifier/initialize_notifier.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
 
 import '../../core/theme/naeng_meh_chu_theme_color.dart';
@@ -18,6 +18,7 @@ class SignUpScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     String nowPage = ref.watch(signUpMoveProvider);
+    ref.read(initializeNotifierProvider.notifier).initializeMember();
     return Scaffold(
       appBar: LeftBackButtonAppBar(
         onPress: () {

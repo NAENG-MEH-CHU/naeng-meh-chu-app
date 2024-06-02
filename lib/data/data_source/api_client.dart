@@ -11,7 +11,7 @@ import '../app_url.dart';
 const storage = FlutterSecureStorage();
 
 class ApiClient {
-  final String baseUrl = 'https://${AppUrl.appUrl}';
+  final String baseUrl = 'http://${AppUrl.appUrl}';
   late http.Client client;
 
   ApiClient() {

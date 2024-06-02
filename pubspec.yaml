@@ -36,6 +36,8 @@ dependencies:
   riverpod_annotation: ^2.3.5
   image_picker: ^1.1.1
   bouncing_widget: ^2.0.0
+  firebase_auth: ^4.20.0
+  firebase_core: ^2.18.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -46,7 +48,6 @@ dependencies:
   flutter_naver_login: ^1.8.0
   google_sign_in: ^6.2.1
   flutter_secure_storage: ^4.2.1
-  firebase_core: ^2.29.0
   http: ^1.2.1
   freezed: ^2.5.2
   freezed_annotation: ^2.4.1

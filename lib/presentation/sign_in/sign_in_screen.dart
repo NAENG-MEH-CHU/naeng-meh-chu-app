@@ -167,8 +167,8 @@ class _SignInScreenState extends State<SignInScreen> {
       final isNew = await MemberRepository.googleLogin(idToken);
 
       if (isNew == true) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (builder) => SignUpScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (builder) => const SignUpScreen()));
       }
     } catch (error) {
       print('Error during Google Sign-In: $error');

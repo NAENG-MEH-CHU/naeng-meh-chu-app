@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view/sign_up_motivation_box.dart';
+import 'package:naeng_meh_chu/presentation/sign_up/view_model/notifier/initialize_notifier.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/view_model/sign_up_provider.dart';
 
 class SignUpSecondMotivation extends ConsumerWidget {
