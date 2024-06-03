@@ -1,1 +1,46 @@
-{"installed":{"client_id":"137753289716-6h2f0lcdc1acn51vifa0r7aj3sae6033.apps.googleusercontent.com","project_id":"naengmehchu-420816","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs"}}
+{
+  "project_info": {
+    "project_number": "819811720828",
+    "project_id": "naengmehchu",
+    "storage_bucket": "naengmehchu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819811720828:android:77c80c5b775620cd6b73f9",
+        "android_client_info": {
+          "package_name": "com.mju.naeng_meh_chu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819811720828-jjvlvnuiq96qgrit66v9s2dfel9atvr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDONlryc0BBK1yQ-BFW2jsk0486FMyWU-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819811720828-jjvlvnuiq96qgrit66v9s2dfel9atvr0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "819811720828-as0udcbkbtm6tf572pefdldhqgoef04s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mju.naengMehChu"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

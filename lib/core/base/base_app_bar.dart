@@ -6,4 +6,5 @@ abstract class BaseAppBar {
   String? get title;
   List<Widget>? get actions;
   bool? get centerTitle;
+  ShapeBorder? get shape;
 }

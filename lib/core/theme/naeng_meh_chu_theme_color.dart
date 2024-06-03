@@ -11,12 +11,17 @@ class NaengMehChuThemeColor {
   static const Color pink4 = Color(0xFFFECDD6);
   static const Color pink5 = Color(0xFFFFE4E8);
   static const Color pink6 = Color(0xFFFFF1F3);
+  static const Color pinkBackground = Color(0xFFFFF5F6);
 
   static const Color beige = Color(0xFFFFFAED);
 
   static const Color gray1 = Color(0xFF404040);
   static const Color gray2 = Color(0xFFBBBBBB);
   static const Color gray3 = Color(0xFF909090);
+
+  static const Color good = Color(0xFFC3F584);
+  static const Color normal = Color(0xFFFF9300);
+  static const Color bad = Color(0xFFFF6363);
 
   static const Color naverColor = Color(0xFF06BD34);
 }

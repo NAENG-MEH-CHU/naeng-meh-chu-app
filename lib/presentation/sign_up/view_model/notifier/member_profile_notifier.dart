@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:naeng_meh_chu/domain/model/member_profile.dart';
+
+import '../../../../data/model/member_profile.dart';
 
 class MemberProfileNotifier extends StateNotifier<MemberProfile> {
   MemberProfileNotifier() : super(MemberProfile(isComplete: false));

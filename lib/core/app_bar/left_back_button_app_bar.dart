@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 
+import '../theme/naeng_meh_chu_theme_color.dart';
+
 class LeftBackButtonAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   final Function() onPress;
@@ -20,6 +22,12 @@ class LeftBackButtonAppBar extends StatelessWidget
       ),
       title: title,
       centerTitle: true,
+      shape: const Border(
+        bottom: BorderSide(
+          color: NaengMehChuThemeColor.gray2,
+          width: 1,
+        ),
+      ),
     );
   }
 
