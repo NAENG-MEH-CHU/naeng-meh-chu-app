@@ -7,6 +7,8 @@ class SignUpApiService {
   Future<String> initializeMember(String nickname, String gender, String age,
       List<String> usingReasons) async {
     const url = '/api/auth/initialize';
+    String? accessToken = await storage.read(key: "accessToken");
+print('@@@@@@ $accessToken');
 
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
@@ -26,10 +28,11 @@ class SignUpApiService {
       body: body,
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Fail');
+      throw Exception(
+          'Failed to initialize member: ${response.statusCode} ${response.reasonPhrase}');
     }
   }
 }

@@ -22,8 +22,9 @@ class ApiClient {
     String? accessToken = await storage.read(key: "accessToken");
     Map<String, String> headers = {};
     if (accessToken != null) {
-      headers["Authorization"] = "Bearer $accessToken";
+      headers["Authorization"] = accessToken;
     }
+    print(headers['Authorization']);
     final url = Uri.parse('$baseUrl$endpoint');
     return await client.get(url, headers: headers);
   }
@@ -33,7 +34,7 @@ class ApiClient {
     String? accessToken = await storage.read(key: "accessToken");
     headers ??= {};
     if (accessToken != null) {
-      headers["Authorization"] = "Bearer $accessToken";
+      headers["Authorization"] = accessToken;
     }
     final url = Uri.parse('$baseUrl$endpoint');
     return await client.post(url, headers: headers, body: body);
@@ -47,7 +48,7 @@ class ApiClient {
     var request = http.MultipartRequest('POST', url);
 
     if (accessToken != null) {
-      request.headers[HttpHeaders.authorizationHeader] = 'Bearer $accessToken';
+      request.headers[HttpHeaders.authorizationHeader] = accessToken;
     }
 
     final mimeTypeData = lookupMimeType(file.path)?.split('/') ??
@@ -80,7 +81,7 @@ class ApiClient {
     headers ??= {};
 
     if (accessToken != null) {
-      headers["Authorization"] = "Bearer $accessToken";
+      headers["Authorization"] = accessToken;
     }
 
     final url = Uri.parse('$baseUrl$endpoint');
