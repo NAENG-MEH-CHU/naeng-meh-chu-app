@@ -9,6 +9,7 @@ import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/food/food_screen.dart';
+import 'package:naeng_meh_chu/presentation/recommend/recommend_screen.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
@@ -99,46 +100,46 @@ class RefrigeratorScreen extends ConsumerWidget {
                                   dateTime: '2024-04-10',
                                   stateColor: NaengMehChuThemeColor.normal,
                                 ),
-                                // SizedBox(
-                                //   width: 16.0,
-                                // ),
-                                // RefrigeratorFood(
-                                //   name: '동그랑땡',
-                                //   dateTime: '2024-04-10',
-                                //   stateColor: NaengMehChuThemeColor.good,
-                                // ),
-                                // SizedBox(
-                                //   width: 16.0,
-                                // ),
-                                // RefrigeratorFood(
-                                //   name: '윙 봉',
-                                //   dateTime: '2024-04-10',
-                                //   stateColor: NaengMehChuThemeColor.normal,
-                                // ),
-                                // SizedBox(
-                                //   width: 16.0,
-                                // ),
-                                // RefrigeratorFood(
-                                //   name: '동그랑땡',
-                                //   dateTime: '2024-04-10',
-                                //   stateColor: NaengMehChuThemeColor.good,
-                                // ),
-                                // SizedBox(
-                                //   width: 16.0,
-                                // ),
-                                // RefrigeratorFood(
-                                //   name: '동그랑땡',
-                                //   dateTime: '2024-04-10',
-                                //   stateColor: NaengMehChuThemeColor.good,
-                                // ),
-                                // SizedBox(
-                                //   width: 16.0,
-                                // ),
-                                // RefrigeratorFood(
-                                //   name: '동그랑땡',
-                                //   dateTime: '2024-04-10',
-                                //   stateColor: NaengMehChuThemeColor.good,
-                                // ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
                               ],
                             ),
                           ),
@@ -171,81 +172,81 @@ class RefrigeratorScreen extends ConsumerWidget {
                           SizedBox(
                             height: 16.0,
                           ),
-                          // SingleChildScrollView(
-                          //   scrollDirection: Axis.horizontal,
-                          //   child: Row(
-                          //     children: [
-                          //       RefrigeratorFood(
-                          //         name: '윙 봉',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.normal,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: 16,
-                          // ),
-                          // SingleChildScrollView(
-                          //   scrollDirection: Axis.horizontal,
-                          //   child: Row(
-                          //     children: [
-                          //       RefrigeratorFood(
-                          //         name: '윙 봉',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.normal,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //       SizedBox(
-                          //         width: 16.0,
-                          //       ),
-                          //       RefrigeratorFood(
-                          //         name: '동그랑땡',
-                          //         dateTime: '2024-04-10',
-                          //         stateColor: NaengMehChuThemeColor.good,
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                RefrigeratorFood(
+                                  name: '윙 봉',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.normal,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                                SizedBox(
+                                  width: 16.0,
+                                ),
+                                RefrigeratorFood(
+                                  name: '동그랑땡',
+                                  dateTime: '2024-04-10',
+                                  stateColor: NaengMehChuThemeColor.good,
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -258,8 +259,18 @@ class RefrigeratorScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: SizedBox(
               width: double.infinity,
-              child:
-                  PinkButton(text: '냉장고 털기', onPressed: () {}, enabled: true),
+              child: PinkButton(
+                text: '냉장고 털기',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (builder) => const RecommendScreen(),
+                    ),
+                  );
+                },
+                enabled: true,
+              ),
             ),
           )
         ],

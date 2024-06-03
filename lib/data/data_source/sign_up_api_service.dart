@@ -7,8 +7,6 @@ class SignUpApiService {
   Future<String> initializeMember(String nickname, String gender, String age,
       List<String> usingReasons) async {
     const url = '/api/auth/initialize';
-    String? accessToken = await storage.read(key: "accessToken");
-print('@@@@@@ $accessToken');
 
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
