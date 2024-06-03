@@ -103,4 +103,19 @@ class NaengMehChuThemeTextStyle {
     fontSize: 24,
     fontWeight: FontWeight.w700,
   );
+
+  static const TextStyle good11 = TextStyle(
+      color: NaengMehChuThemeColor.good,
+      fontSize: 11,
+      fontWeight: FontWeight.w700);
+
+  static const TextStyle normal11 = TextStyle(
+      color: NaengMehChuThemeColor.normal,
+      fontSize: 11,
+      fontWeight: FontWeight.w700);
+
+  static const TextStyle bad11 = TextStyle(
+      color: NaengMehChuThemeColor.bad,
+      fontSize: 11,
+      fontWeight: FontWeight.w700);
 }

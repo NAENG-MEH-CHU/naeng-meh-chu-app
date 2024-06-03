@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/theme/naeng_meh_chu_theme_color.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
 
-class RecipeSearchContainer extends ConsumerWidget {
-  const RecipeSearchContainer({super.key});
+class SearchContainer extends ConsumerWidget {
+  const SearchContainer({super.key, required this.message});
+
+  final String message;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,8 +25,8 @@ class RecipeSearchContainer extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            '오늘의 레시피를 검색해 보세요',
+          Text(
+            message,
             style: NaengMehChuThemeTextStyle.gray1Regular12,
           ),
           SvgPicture.asset(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/presentation/recipe/view/recipe_card.dart';
-import 'package:naeng_meh_chu/presentation/recipe/view/recipe_search_container.dart';
+import 'package:naeng_meh_chu/presentation/recipe/view/search_container.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
 
@@ -20,7 +20,7 @@ class RecipeScreen extends ConsumerWidget {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                RecipeSearchContainer(),
+                SearchContainer(message: '오늘의 레시피를 검색해 보세요',),
                 SizedBox(
                   height: 32.0,
                 ),
