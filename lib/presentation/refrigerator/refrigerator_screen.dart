@@ -17,7 +17,9 @@ class RefrigeratorScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const MainAppBar(
+        actions: [],
         title: '푸매니저님의 냉장고',
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -118,7 +120,8 @@ class RefrigeratorScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: SizedBox(
               width: double.infinity,
-              child: PinkButton(text: '냉장고 털기', onPressed: () {}, enabled: true),
+              child:
+                  PinkButton(text: '냉장고 털기', onPressed: () {}, enabled: true),
             ),
           )
         ],
