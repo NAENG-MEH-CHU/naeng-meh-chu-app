@@ -48,6 +48,17 @@ class NaengMehChuThemeTextStyle {
     fontSize: 20,
   );
 
+  static const TextStyle gray1Regular12 = TextStyle(
+      color: NaengMehChuThemeColor.gray1,
+      fontSize: 12,
+      fontWeight: FontWeight.w400);
+
+
+  static const TextStyle gray1Bold12 = TextStyle(
+      color: NaengMehChuThemeColor.gray1,
+      fontSize: 12,
+      fontWeight: FontWeight.w700);
+
   static const TextStyle gray1Regular14 = TextStyle(
       color: NaengMehChuThemeColor.gray1,
       fontSize: 14,
