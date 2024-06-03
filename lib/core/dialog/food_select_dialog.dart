@@ -44,13 +44,14 @@ class FoodSelectDialog extends ConsumerWidget {
             ),
             const FoodAddBox(
                 child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FoodAddBox(child: Text('달걀')),
-                FoodAddBox(child: Text('달걀')),
-                FoodAddBox(child: Text('달걀')),
-                FoodAddBox(child: Text('달걀')),
-                FoodAddBox(child: Text('달걀')),
-                FoodAddBox(child: Text('달걀')),
+                Text('달걀'),
+                Text('달걀'),
+                Text('달걀'),
+                Text('달걀'),
+                Text('달걀'),
+                Text('달걀'),
               ],
             ))
           ],

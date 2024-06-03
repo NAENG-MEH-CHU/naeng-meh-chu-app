@@ -8,11 +8,22 @@ import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/food_add/view/food_add_box.dart';
 
-class FoodAddScreen extends ConsumerWidget {
+class FoodAddScreen extends ConsumerStatefulWidget {
   const FoodAddScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState createState() => _FoodAddScreenState();
+}
+
+class _FoodAddScreenState extends ConsumerState<FoodAddScreen> {
+  @override
+  Widget build(BuildContext context) {
+    const List<String> list = <String>[
+      '냉장 보관',
+      '냉동 보관',
+    ];
+    String dropdownValue = '';
+
     return Scaffold(
       appBar: LeftBackButtonAppBar(
         onPress: () {
@@ -27,7 +38,7 @@ class FoodAddScreen extends ConsumerWidget {
               width: double.infinity,
               color: NaengMehChuThemeColor.pinkBackground,
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -69,20 +80,47 @@ class FoodAddScreen extends ConsumerWidget {
                       '보관 방법을 설정해주세요.',
                       style: NaengMehChuThemeTextStyle.blackBold16,
                     ),
-                    FoodAddBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            '카테고리 선택 후 자동 설정 됩니다',
-                            style: NaengMehChuThemeTextStyle.gray2Medium14,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                              color: NaengMehChuThemeColor.pink1,
+                              width: 1.0,
+                            ),
                           ),
-                          SizedBox(
-                            width: 16.0,
-                            height: 16.0,
-                            child: SvgPicture.asset('assets/icon/ic_down.svg'),
-                          )
-                        ],
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                              color: NaengMehChuThemeColor.pink1,
+                              width: 1.0,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                              color: NaengMehChuThemeColor.pink1,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                        hint: const Text('선택'),
+                        items:
+                            list.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                          });
+                        },
                       ),
                     ),
                     const Text(
