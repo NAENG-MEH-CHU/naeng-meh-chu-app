@@ -38,10 +38,20 @@ class NaengMehChuThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
+  static const TextStyle blackBold18 = TextStyle(
+      color: NaengMehChuThemeColor.black,
+      fontSize: 18,
+      fontWeight: FontWeight.w700);
+
   static const TextStyle blackMedium20 = TextStyle(
     color: NaengMehChuThemeColor.black,
     fontSize: 20,
   );
+
+  static const TextStyle gray1Regular14 = TextStyle(
+      color: NaengMehChuThemeColor.gray1,
+      fontSize: 14,
+      fontWeight: FontWeight.w400);
 
   static const TextStyle gray2Medium10 = TextStyle(
     color: NaengMehChuThemeColor.gray2,

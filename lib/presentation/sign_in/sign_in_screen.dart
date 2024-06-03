@@ -200,7 +200,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
       final isNew = await MemberRepository.naverLogin(res.accessToken);
 
-      if (isNew == false) {
+      if (isNew == true) {
         Navigator.push(
           context,
           MaterialPageRoute(
