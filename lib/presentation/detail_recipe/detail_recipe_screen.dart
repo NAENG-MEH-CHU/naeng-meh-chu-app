@@ -72,6 +72,26 @@ class DetailRecipeScreen extends ConsumerWidget {
                             '조리 과정',
                             style: NaengMehChuThemeTextStyle.gray1Bold12,
                           ),
+                          Text(
+                            '설명' * 50,
+                            style: NaengMehChuThemeTextStyle.gray1Regular12,
+                          ),
+                          Text(
+                            '설명' * 50,
+                            style: NaengMehChuThemeTextStyle.gray1Regular12,
+                          ),
+                          Text(
+                            '설명' * 50,
+                            style: NaengMehChuThemeTextStyle.gray1Regular12,
+                          ),
+                          Text(
+                            '설명' * 50,
+                            style: NaengMehChuThemeTextStyle.gray1Regular12,
+                          ),
+                          Text(
+                            '설명' * 50,
+                            style: NaengMehChuThemeTextStyle.gray1Regular12,
+                          ),
                         ],
                       ),
                     ),

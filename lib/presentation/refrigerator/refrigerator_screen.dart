@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
-import 'package:naeng_meh_chu/presentation/food/food_screen.dart';
 import 'package:naeng_meh_chu/presentation/recommend/recommend_screen.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
+import '../food_add/food_add_screen.dart';
 
 class RefrigeratorScreen extends ConsumerWidget {
   const RefrigeratorScreen({
@@ -54,7 +54,7 @@ class RefrigeratorScreen extends ConsumerWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (builder) => const FoodScreen(),
+                                  builder: (builder) => const FoodAddScreen(),
                                 ),
                               );
                             },
