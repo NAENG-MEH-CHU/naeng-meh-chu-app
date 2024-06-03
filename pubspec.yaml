@@ -36,8 +36,6 @@ dependencies:
   riverpod_annotation: ^2.3.5
   image_picker: ^1.1.1
   bouncing_widget: ^2.0.0
-  firebase_auth: ^4.20.0
-  firebase_core: ^2.18.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -48,6 +46,7 @@ dependencies:
   flutter_naver_login: ^1.8.0
   google_sign_in: ^6.2.1
   flutter_secure_storage: ^4.2.1
+  firebase_core: ^2.29.0
   http: ^1.2.1
   freezed: ^2.5.2
   freezed_annotation: ^2.4.1
@@ -179,13 +178,13 @@ flutter_native_splash:
   # Following are specific parameters for Android 12+.
   android_12:
 
-  # The image parameter sets the splash screen icon image.  If this parameter is not specified,
-  # the app's launcher icon will be used instead.
-  # Please note that the splash screen will be clipped to a circle on the center of the screen.
-  # App icon with an icon background: This should be 960×960 pixels, and fit within a circle
-  # 640 pixels in diameter.
-  # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
-  # 768 pixels in diameter.
+    # The image parameter sets the splash screen icon image.  If this parameter is not specified,
+    # the app's launcher icon will be used instead.
+    # Please note that the splash screen will be clipped to a circle on the center of the screen.
+    # App icon with an icon background: This should be 960×960 pixels, and fit within a circle
+    # 640 pixels in diameter.
+    # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
+    # 768 pixels in diameter.
     image: assets/image/img_logo.png
 
   # Splash screen background color.
