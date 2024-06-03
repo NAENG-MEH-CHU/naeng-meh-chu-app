@@ -176,7 +176,63 @@ class MyPageScreen extends ConsumerWidget {
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
-                                // 로그아웃 클릭 시 동작
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              '로그아웃 하시겠어요?',
+                                              style: NaengMehChuThemeTextStyle
+                                                  .gray3Bold15,
+                                            ),
+                                            SizedBox(height: 20),
+                                            Divider(),
+                                            ListTile(
+                                              title: Center(
+                                                child: Text(
+                                                  '로그아웃 하기',
+                                                  style: TextStyle(
+                                                      color:
+                                                          NaengMehChuThemeColor
+                                                              .pink1,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                // 로그아웃 기능 추가
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                            Divider(),
+                                            ListTile(
+                                              title: Center(
+                                                child: Text(
+                                                  '취소',
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
                               },
                               child: Icon(Icons.arrow_forward_ios,
                                   color: NaengMehChuThemeColor.pink1),
@@ -194,7 +250,77 @@ class MyPageScreen extends ConsumerWidget {
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               onTap: () {
-                                // 회원탈퇴 클릭 시 동작
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              '냉메추를 탈퇴하시겠어요?',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(height: 20),
+                                            Text(
+                                              '⚠️ 지금까지의 냉메추 기록이 모두 사라져요',
+                                              style: NaengMehChuThemeTextStyle
+                                                  .pinkBold18,
+                                            ),
+                                            SizedBox(height: 10),
+                                            Text(
+                                              '내 레시피북 보기 레시피가 모두 사라져요\n유통기한 임박 재료 알림을 받을 수 없어요\n저장된 냉장고 재료가 모두 사라져요',
+                                              style: NaengMehChuThemeTextStyle
+                                                  .gray3Bold15,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(height: 20),
+                                            Divider(),
+                                            ListTile(
+                                              title: Center(
+                                                child: Text(
+                                                  '탈퇴하기',
+                                                  style: TextStyle(
+                                                      color:
+                                                          NaengMehChuThemeColor
+                                                              .pink1,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                // 탈퇴 기능 추가
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                            Divider(),
+                                            ListTile(
+                                              title: Center(
+                                                child: Text(
+                                                  '취소',
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
                               },
                               child: Icon(Icons.arrow_forward_ios,
                                   color: Colors.pinkAccent),
