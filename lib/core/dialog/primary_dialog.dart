@@ -6,10 +6,12 @@ import '../base/base_dialog.dart';
 
 class PrimaryDialog extends ConsumerWidget implements BaseDialog {
   const PrimaryDialog(
-      {super.key, this.title, this.content, this.actions});
+      {super.key, this.title, this.titleTextStyle, this.content, this.actions});
 
   @override
   final Widget? title;
+  @override
+  final TextStyle? titleTextStyle;
   @override
   final Widget? content;
   @override
@@ -19,6 +21,7 @@ class PrimaryDialog extends ConsumerWidget implements BaseDialog {
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       title: title,
+      titleTextStyle: titleTextStyle,
       content: content,
       actions: actions,
       backgroundColor: NaengMehChuThemeColor.white,
