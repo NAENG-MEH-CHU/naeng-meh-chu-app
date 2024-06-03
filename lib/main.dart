@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
-import 'package:naeng_meh_chu/presentation/main/main_screen.dart';
 import 'package:naeng_meh_chu/presentation/sign_in/sign_in_screen.dart';
 
 import 'data/app_url.dart';
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
         },
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: const MainScreen(selectedIndex: 1),
+          home: const SignInScreen(),
           theme: ThemeData(
             fontFamily: 'NotoSansKR',
             scaffoldBackgroundColor: NaengMehChuThemeColor.white,

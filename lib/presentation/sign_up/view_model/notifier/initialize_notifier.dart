@@ -13,7 +13,7 @@ class InitializeNotifier extends _$InitializeNotifier {
 
   Future<void> initializeMember() async {
     final response = await MemberRepository.initializeMember(
-        'nickname', 'gender', 'age', ['usingReasons']);
+        'nickname', 'gender', 'age', ['좀 더 다양한 음식을 해 먹고 싶어요.']);
     print(response);
   }
 }
