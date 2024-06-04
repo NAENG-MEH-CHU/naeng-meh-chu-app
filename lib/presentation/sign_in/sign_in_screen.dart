@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/data/repository/member_repository.dart';
+import 'package:naeng_meh_chu/presentation/main/main_screen.dart';
 import 'package:naeng_meh_chu/presentation/sign_up/sign_up_screen.dart';
 
 import '../../core/button/sign_in_button.dart';
@@ -170,6 +171,14 @@ class _SignInScreenState extends State<SignInScreen> {
         Navigator.push(context,
             MaterialPageRoute(builder: (builder) => const SignUpScreen()));
       }
+      if (isNew == false) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const MainScreen(selectedIndex: 1),
+          ),
+        );
+      }
     } catch (error) {
       print('Error during Google Sign-In: $error');
     }
@@ -205,6 +214,14 @@ class _SignInScreenState extends State<SignInScreen> {
           context,
           MaterialPageRoute(
             builder: (builder) => const SignUpScreen(),
+          ),
+        );
+      }
+      if (isNew == false) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const MainScreen(selectedIndex: 1),
           ),
         );
       }
@@ -268,7 +285,7 @@ class _SignInScreenState extends State<SignInScreen> {
       return;
     }
     final Map<String, dynamic> data =
-        convert.jsonDecode(response.body) as Map<String, dynamic>;
+    convert.jsonDecode(response.body) as Map<String, dynamic>;
     final String? namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
@@ -282,14 +299,14 @@ class _SignInScreenState extends State<SignInScreen> {
   String? _pickFirstNamedContact(Map<String, dynamic> data) {
     final List<dynamic>? connections = data['connections'] as List<dynamic>?;
     final Map<String, dynamic>? contact = connections?.firstWhere(
-      (dynamic contact) => (contact as Map<Object?, dynamic>)['names'] != null,
+          (dynamic contact) => (contact as Map<Object?, dynamic>)['names'] != null,
       orElse: () => null,
     ) as Map<String, dynamic>?;
     if (contact != null) {
       final List<dynamic> names = contact['names'] as List<dynamic>;
       final Map<String, dynamic>? name = names.firstWhere(
-        (dynamic name) =>
-            (name as Map<Object?, dynamic>)['displayName'] != null,
+            (dynamic name) =>
+        (name as Map<Object?, dynamic>)['displayName'] != null,
         orElse: () => null,
       ) as Map<String, dynamic>?;
       if (name != null) {

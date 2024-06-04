@@ -14,28 +14,26 @@ class RecipeScreen extends ConsumerWidget {
       appBar: MainAppBar(
         title: '레시피',
       ),
-      body: Expanded(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                SearchContainer(message: '오늘의 레시피를 검색해 보세요',),
-                SizedBox(
-                  height: 32.0,
-                ),
-                RecipeCard(
-                  title: '옆집 할머니가 해주신 삼계탕 레시피',
-                  description:
-                      '할머니가 해주신 맛이 나는 맛있는 삼계탕 레시피를 공유할게요! 자취생들도 쉽게 만들 수 있어요!',
-                ),
-                RecipeCard(
-                  title: '옆집 할머니가 해주신 삼계탕 레시피',
-                  description:
-                      '할머니가 해주신 맛이 나는 맛있는 삼계탕 레시피를 공유할게요! 자취생들도 쉽게 만들 수 있어요!',
-                ),
-              ],
-            ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SearchContainer(message: '오늘의 레시피를 검색해 보세요',),
+              SizedBox(
+                height: 32.0,
+              ),
+              RecipeCard(
+                title: '옆집 할머니가 해주신 삼계탕 레시피',
+                description:
+                '할머니가 해주신 맛이 나는 맛있는 삼계탕 레시피를 공유할게요! 자취생들도 쉽게 만들 수 있어요!',
+              ),
+              RecipeCard(
+                title: '옆집 할머니가 해주신 삼계탕 레시피',
+                description:
+                '할머니가 해주신 맛이 나는 맛있는 삼계탕 레시피를 공유할게요! 자취생들도 쉽게 만들 수 있어요!',
+              ),
+            ],
           ),
         ),
       ),

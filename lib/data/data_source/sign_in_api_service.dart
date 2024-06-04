@@ -11,8 +11,6 @@ const storage = FlutterSecureStorage();
 class SignInApiService {
   Future<bool?> googleSignIn(String accessToken) async {
     try {
-      AppMember appMember = AppMember();
-
       var url = Uri.http(
         '${dotenv.env['APP_URL']}',
         '/api/auth/login/google',
@@ -26,13 +24,13 @@ class SignInApiService {
         },
       );
 
+      print(response.body);
+
       if (response.statusCode == 201) {
         var jsonResponse =
-            convert.jsonDecode(response.body) as Map<String, dynamic>;
-        appMember.accessToken = jsonResponse['data']['accessToken'];
-        appMember.refreshToken = jsonResponse['data']['refreshToken'];
-        await storage.write(key: "accessToken", value: appMember.accessToken);
-        await storage.write(key: "refreshToken", value: appMember.refreshToken);
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
+        await storage.write(
+            key: "accessToken", value: jsonResponse['token']);
         return jsonResponse['new'];
       }
     } catch (error) {
@@ -62,8 +60,7 @@ class SignInApiService {
             convert.jsonDecode(response.body) as Map<String, dynamic>;
         await storage.write(
             key: "accessToken", value: jsonResponse['token']);
-        print(jsonResponse['token']);
-        return jsonResponse['new'];
+        return jsonResponse ['new'];
       }
     } catch (error) {
       return null;
