@@ -20,7 +20,9 @@ class ApiClient {
 
   Future<http.Response> get(String endpoint) async {
     String? accessToken = await storage.read(key: "accessToken");
-    Map<String, String> headers = {};
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
     if (accessToken != null) {
       headers["Authorization"] = accessToken;
     }

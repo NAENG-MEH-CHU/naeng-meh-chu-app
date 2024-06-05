@@ -5,10 +5,16 @@ import '../../../core/theme/naeng_meh_chu_theme_color.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
 
 class RecipeCard extends ConsumerWidget {
-  const RecipeCard({super.key, required this.title, required this.description});
+  const RecipeCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.thumbnail,
+  });
 
   final String title;
   final String description;
+  final String thumbnail;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,37 +33,49 @@ class RecipeCard extends ConsumerWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: containerHeight,
-                  padding: const EdgeInsets.all(32.0),
-                  decoration: ShapeDecoration(
-                    color: NaengMehChuThemeColor.beige,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: containerHeight,
+                decoration: BoxDecoration(
+                  color: NaengMehChuThemeColor.beige,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/image/img_logo.png',
+                    image: thumbnail,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: containerHeight,
+                    imageErrorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'assets/image/img_logo.png',
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: containerHeight,
+                      );
+                    },
                   ),
                 ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                Text(
-                  title,
-                  style: NaengMehChuThemeTextStyle.gray1Medium16,
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                Text(
-                  description,
-                  style: NaengMehChuThemeTextStyle.gray1Regular12,
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              Text(
+                title,
+                style: NaengMehChuThemeTextStyle.gray1Medium16,
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              Text(
+                description,
+                style: NaengMehChuThemeTextStyle.gray1Regular12,
+              ),
+            ],
           ),
         ),
       ),

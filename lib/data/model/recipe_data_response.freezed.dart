@@ -118,7 +118,9 @@ class __$$RecipeDataResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RecipeDataResponseImpl implements _RecipeDataResponse {
+class _$RecipeDataResponseImpl
+    with DiagnosticableTreeMixin
+    implements _RecipeDataResponse {
   const _$RecipeDataResponseImpl(
       {required this.id, required this.name, required this.thumbnail});
 
@@ -133,8 +135,18 @@ class _$RecipeDataResponseImpl implements _RecipeDataResponse {
   final String thumbnail;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'RecipeDataResponse(id: $id, name: $name, thumbnail: $thumbnail)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeDataResponse'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('thumbnail', thumbnail));
   }
 
   @override
