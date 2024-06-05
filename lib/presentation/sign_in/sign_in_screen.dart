@@ -285,7 +285,7 @@ class _SignInScreenState extends State<SignInScreen> {
       return;
     }
     final Map<String, dynamic> data =
-    convert.jsonDecode(response.body) as Map<String, dynamic>;
+        convert.jsonDecode(response.body) as Map<String, dynamic>;
     final String? namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
@@ -299,14 +299,14 @@ class _SignInScreenState extends State<SignInScreen> {
   String? _pickFirstNamedContact(Map<String, dynamic> data) {
     final List<dynamic>? connections = data['connections'] as List<dynamic>?;
     final Map<String, dynamic>? contact = connections?.firstWhere(
-          (dynamic contact) => (contact as Map<Object?, dynamic>)['names'] != null,
+      (dynamic contact) => (contact as Map<Object?, dynamic>)['names'] != null,
       orElse: () => null,
     ) as Map<String, dynamic>?;
     if (contact != null) {
       final List<dynamic> names = contact['names'] as List<dynamic>;
       final Map<String, dynamic>? name = names.firstWhere(
-            (dynamic name) =>
-        (name as Map<Object?, dynamic>)['displayName'] != null,
+        (dynamic name) =>
+            (name as Map<Object?, dynamic>)['displayName'] != null,
         orElse: () => null,
       ) as Map<String, dynamic>?;
       if (name != null) {
