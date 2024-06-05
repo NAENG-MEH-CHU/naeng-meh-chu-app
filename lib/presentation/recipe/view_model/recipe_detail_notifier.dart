@@ -1,13 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../../data/data_source/recipe_api_service.dart';
 
 final recipeDetailNotifierProvider =
-StateNotifierProvider.autoDispose<RecipeDetailNotifier, AsyncValue<String>>(
-        (ref) {
-      final apiService = ref.watch(recipeApiServiceProvider);
-      return RecipeDetailNotifier(apiService);
-    });
+StateNotifierProvider.autoDispose<RecipeDetailNotifier, AsyncValue<String>>((ref) {
+  final apiService = ref.watch(recipeApiServiceProvider);
+  return RecipeDetailNotifier(apiService);
+});
 
 class RecipeDetailNotifier extends StateNotifier<AsyncValue<String>> {
   final RecipeApiService _apiService;
@@ -19,7 +17,9 @@ class RecipeDetailNotifier extends StateNotifier<AsyncValue<String>> {
     try {
       final detail = await _apiService.getRecipeDetail(recipeId);
       state = AsyncData(detail);
-    } catch (error) {
+    } catch (error, stackTrace) {
+      state = AsyncError(error, stackTrace);
+      print('Error fetching recipe detail: $error');
     }
   }
 }
