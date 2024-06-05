@@ -56,6 +56,7 @@ class _RecipeScreenState extends ConsumerState<RecipeScreen> {
                 title: recipe.name,
                 description: '',
                 thumbnail: recipe.thumbnail,
+                recipeId: recipe.id,
               );
             } else {
               return const Padding(
