@@ -44,6 +44,8 @@ class _RecipeScreenState extends ConsumerState<RecipeScreen> {
     return Scaffold(
       appBar: const MainAppBar(
         title: '레시피',
+        actions: [],
+        centerTitle: true,
       ),
       body: recipe.when(
         data: (recipes) => ListView.builder(
