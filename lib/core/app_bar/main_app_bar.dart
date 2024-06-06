@@ -5,7 +5,11 @@ import 'package:naeng_meh_chu/core/app_bar/primary_app_bar.dart';
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  const MainAppBar({super.key, required this.title});
+  const MainAppBar(
+      {super.key,
+      required this.title,
+      required List<Padding> actions,
+      required bool centerTitle});
 
   @override
   Widget build(BuildContext context) {
