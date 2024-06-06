@@ -5,6 +5,7 @@ class MemberProfile {
   final String? nickname;
   final String? gender;
   final String? age;
+  final String? usingReasons;
   final bool isComplete;
 
   MemberProfile(
@@ -12,6 +13,7 @@ class MemberProfile {
       this.nickname,
       this.gender,
       this.age,
+      this.usingReasons,
       required this.isComplete});
 
   MemberProfile copyWith({
@@ -19,6 +21,7 @@ class MemberProfile {
     String? nickname,
     String? gender,
     String? age,
+    String? usingReasons,
     required bool isComplete,
   }) {
     return MemberProfile(
@@ -26,6 +29,7 @@ class MemberProfile {
       nickname: nickname,
       gender: gender,
       age: age,
+      usingReasons: usingReasons,
       isComplete: isComplete,
     );
   }
