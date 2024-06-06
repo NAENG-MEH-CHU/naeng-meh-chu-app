@@ -12,7 +12,9 @@ class RecipeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
       appBar: MainAppBar(
+        actions: [],
         title: '레시피',
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

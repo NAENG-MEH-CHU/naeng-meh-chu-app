@@ -11,6 +11,10 @@ class NaengMehChuThemeTextStyle {
     color: NaengMehChuThemeColor.black,
     fontSize: 12,
   );
+  static const TextStyle blackBold13 = TextStyle(
+      color: NaengMehChuThemeColor.black,
+      fontSize: 13,
+      fontWeight: FontWeight.w700);
 
   static const TextStyle blackMedium14 = TextStyle(
     color: NaengMehChuThemeColor.black,
@@ -32,6 +36,21 @@ class NaengMehChuThemeTextStyle {
     fontSize: 15,
   );
 
+  static const TextStyle blackBold15 = TextStyle(
+      color: NaengMehChuThemeColor.black,
+      fontSize: 15,
+      fontWeight: FontWeight.w700);
+
+  static const TextStyle gray2Bold15 = TextStyle(
+      color: NaengMehChuThemeColor.gray2,
+      fontSize: 15,
+      fontWeight: FontWeight.w700);
+
+  static const TextStyle gray3Bold15 = TextStyle(
+      color: NaengMehChuThemeColor.gray3,
+      fontSize: 15,
+      fontWeight: FontWeight.w700);
+
   static const TextStyle blackSemiBold16 = TextStyle(
     color: NaengMehChuThemeColor.black,
     fontSize: 16,
@@ -48,6 +67,20 @@ class NaengMehChuThemeTextStyle {
     fontSize: 20,
   );
 
+  static const TextStyle gray2Regular11 = TextStyle(
+      color: NaengMehChuThemeColor.gray2,
+      fontSize: 11,
+      fontWeight: FontWeight.w400);
+
+  static const TextStyle gray2Regular12 = TextStyle(
+      color: NaengMehChuThemeColor.gray2,
+      fontSize: 12,
+      fontWeight: FontWeight.w400);
+
+  static const TextStyle gray2Regular14 = TextStyle(
+      color: NaengMehChuThemeColor.gray2,
+      fontSize: 12,
+      fontWeight: FontWeight.w400);
   static const TextStyle gray1Regular12 = TextStyle(
       color: NaengMehChuThemeColor.gray1,
       fontSize: 12,
@@ -78,11 +111,6 @@ class NaengMehChuThemeTextStyle {
     fontSize: 14,
   );
 
-  static const TextStyle gray2Regular11 = TextStyle(
-      color: NaengMehChuThemeColor.gray2,
-      fontSize: 11,
-      fontWeight: FontWeight.w400);
-
   static const TextStyle gray3Medium11 = TextStyle(
     color: NaengMehChuThemeColor.gray3,
     fontSize: 11,
@@ -96,6 +124,12 @@ class NaengMehChuThemeTextStyle {
   static const TextStyle pinkMedium18 = TextStyle(
     color: NaengMehChuThemeColor.pink1,
     fontSize: 18,
+  );
+
+  static const TextStyle pinkBold18 = TextStyle(
+    color: NaengMehChuThemeColor.pink1,
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
   );
 
   static const TextStyle pinkBold24 = TextStyle(
