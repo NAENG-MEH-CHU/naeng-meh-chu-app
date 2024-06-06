@@ -6,11 +6,12 @@ import 'package:naeng_meh_chu/presentation/cold/cold_screen.dart';
 import '../../../core/theme/naeng_meh_chu_theme_color.dart';
 
 class RefrigeratorFood extends ConsumerWidget {
-  const RefrigeratorFood(
-      {super.key,
-      required this.stateColor,
-      required this.name,
-      required this.dateTime});
+  const RefrigeratorFood({
+    super.key,
+    required this.stateColor,
+    required this.name,
+    required this.dateTime,
+  });
 
   final Color stateColor;
   final String name;
