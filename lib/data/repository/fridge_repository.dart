@@ -1,15 +1,8 @@
-import 'package:naeng_meh_chu/data/data_source/recipe_api_service.dart';
+import 'package:naeng_meh_chu/data/data_source/fridge_api_service.dart';
 
 class FridgeRepository {
-  static Future<String> allRecipe() async {
-    String? response = await RecipeApiService().allRecipe();
-    print(response);
-    return response;
-  }
-
-  static Future<String> getRecipeDetail(String recipeId) async {
-    String? response = await RecipeApiService().getRecipeDetail(recipeId);
-
+  static Future<String> allFridge() async {
+    String? response = await FridgeApiService().allFridge();
     print(response);
     return response;
   }
