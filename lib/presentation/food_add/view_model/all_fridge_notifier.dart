@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:naeng_meh_chu/data/data_source/fridge_api_service.dart';
 import 'package:naeng_meh_chu/data/model/all_fridge_model.dart';
 import 'package:naeng_meh_chu/data/repository/fridge_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,6 +20,14 @@ class AllFridgeNotifier extends _$AllFridgeNotifier {
     final allFridge = await build();
     final start = page * pageSize;
     final end = start + pageSize;
-    return allFridge.ingredients.sublist(start, end > allFridge.ingredients.length ? allFridge.ingredients.length : end);
+    return allFridge.ingredients.sublist(
+        start,
+        end > allFridge.ingredients.length
+            ? allFridge.ingredients.length
+            : end);
+  }
+
+  Future<void> fridgeAdd(int ingredientId, int year, int month, int day) async {
+    await FridgeApiService().fridgeAdd(ingredientId, year, month, day);
   }
 }

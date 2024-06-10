@@ -10,4 +10,15 @@ class FridgeRepository {
     String? response = await FridgeApiService().fridgeMine();
     return response;
   }
+
+  static Future<String> addFood(
+    int ingredientId,
+    int year,
+    int month,
+    int day,
+  ) async {
+    String response =
+        await FridgeApiService().fridgeAdd(ingredientId, year, month, day);
+    return response;
+  }
 }

@@ -10,59 +10,51 @@ import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/data/data_source/fridge_api_service.dart';
 import 'package:naeng_meh_chu/data/model/all_fridge_model.dart';
 import 'package:naeng_meh_chu/presentation/food_add/view/food_add_box.dart';
+import 'package:naeng_meh_chu/presentation/food_add/view/selected_ingredient_notifier.dart';
 
 import '../../core/dialog/food_select_dialog.dart';
 
-class FoodAddScreen extends ConsumerStatefulWidget {
+class FoodAddScreen extends ConsumerWidget {
   const FoodAddScreen({super.key});
 
   @override
-  _FoodAddScreenState createState() => _FoodAddScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIngredient = ref.watch(selectedIngredientProvider);
+    final expirationDate = ref.watch(expirationDateProvider);
 
-class _FoodAddScreenState extends ConsumerState<FoodAddScreen> {
-  Ingredient? _selectedIngredient;
-  DateTime? _expirationDate;
+    Future<void> _showFoodSelectDialog() async {
+      final result = await showDialog<Ingredient>(
+        context: context,
+        builder: (context) => const FoodSelectDialog(),
+      );
 
-  void _showFoodSelectDialog() async {
-    final result = await showDialog<Ingredient>(
-      context: context,
-      builder: (context) => const FoodSelectDialog(),
-    );
-
-    if (result != null) {
-      setState(() {
-        _selectedIngredient = result;
-      });
-    }
-  }
-
-  void _onDateSelected(DateTime selectedDate) {
-    setState(() {
-      _expirationDate = selectedDate;
-    });
-  }
-
-  Future<void> _saveToFridge() async {
-    if (_selectedIngredient != null && _expirationDate != null) {
-      try {
-        final response = await FridgeApiService().fridgeAdd(
-          _selectedIngredient!.ingredientId,
-          _expirationDate!.year,
-          _expirationDate!.month,
-          _expirationDate!.day,
-        );
-        print('저장 성공: $response');
-      } catch (e) {
-        print('저장 실패: $e');
+      if (result != null) {
+        ref.read(selectedIngredientProvider.notifier).selectIngredient(result);
       }
-    } else {
-      print('재료와 유통 기한을 선택해주세요.');
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
+    void _onDateSelected(DateTime selectedDate) {
+      ref.read(expirationDateProvider.notifier).selectDate(selectedDate);
+    }
+
+    Future<void> _saveToFridge() async {
+      if (selectedIngredient != null && expirationDate != null) {
+        try {
+          await FridgeApiService().fridgeAdd(
+            selectedIngredient.ingredientId,
+            expirationDate.year,
+            expirationDate.month,
+            expirationDate.day,
+          );
+          print('저장 성공');
+        } catch (e) {
+          print('저장 실패: $e');
+        }
+      } else {
+        print('재료와 유통 기한을 선택해주세요.');
+      }
+    }
+
     return Scaffold(
       appBar: LeftBackButtonAppBar(
         onPress: () {
@@ -107,7 +99,7 @@ class _FoodAddScreenState extends ConsumerState<FoodAddScreen> {
                                 width: 8.0,
                               ),
                               Text(
-                                _selectedIngredient?.name ?? '재료를 검색해 보세요',
+                                selectedIngredient?.name ?? '재료를 검색해 보세요',
                                 style: NaengMehChuThemeTextStyle.gray2Medium14,
                               ),
                             ],
@@ -124,8 +116,8 @@ class _FoodAddScreenState extends ConsumerState<FoodAddScreen> {
                       ),
                       FoodAddBox(
                         child: Text(
-                          _expirationDate != null
-                              ? DateFormat('yy/MM/dd').format(_expirationDate!)
+                          expirationDate != null
+                              ? DateFormat('yy/MM/dd').format(expirationDate)
                               : 'yy/mm/dd',
                           style: NaengMehChuThemeTextStyle.gray2Medium14,
                         ),

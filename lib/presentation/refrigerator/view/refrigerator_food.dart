@@ -37,23 +37,11 @@ class RefrigeratorFood extends ConsumerWidget {
                 padding: const EdgeInsets.all(32.0),
                 decoration: ShapeDecoration(
                   image: const DecorationImage(
-                    image: AssetImage('assets/image/example_image.png'),
+                    image: AssetImage('assets/image/img_logo.png'),
                   ),
                   color: NaengMehChuThemeColor.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Container(
-                padding: const EdgeInsets.all(4.0),
-                decoration: ShapeDecoration(
-                  color: stateColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
                   ),
                 ),
               ),

@@ -5,6 +5,7 @@ import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/data/model/fridge_mine_model.dart';
+import 'package:naeng_meh_chu/data/repository/recipe_repository.dart';
 import 'package:naeng_meh_chu/presentation/food_add/food_add_screen.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/food_state.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
@@ -117,7 +118,7 @@ class RefrigeratorScreen extends ConsumerWidget {
                             return RefrigeratorFood(
                               stateColor: NaengMehChuThemeColor.pink6,
                               name: ingredient.name,
-                              dateTime: 'D${ingredient.dueDay}',
+                              dateTime: ingredient.dueDay != 0 ? 'D${ingredient.dueDay}' : '',
                             );
                           },
                         ),
@@ -129,7 +130,9 @@ class RefrigeratorScreen extends ConsumerWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: PinkButton(
-                        text: '냉장고 털기', onPressed: () {}, enabled: true),
+                        text: '냉장고 털기', onPressed: () {
+                          RecipeRepository.recipe();
+                    }, enabled: true),
                   ),
                 ),
             ],

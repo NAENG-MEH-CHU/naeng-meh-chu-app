@@ -6,7 +6,7 @@ part of 'all_fridge_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allFridgeNotifierHash() => r'4791c892874ceb7fd7009537412f25d861b7311c';
+String _$allFridgeNotifierHash() => r'4026c428800c83a5c618c128f8ab5a92b83b7df2';
 
 /// See also [AllFridgeNotifier].
 @ProviderFor(AllFridgeNotifier)
