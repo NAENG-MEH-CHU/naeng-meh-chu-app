@@ -1,21 +1,57 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:naeng_meh_chu/core/dialog/primary_dialog.dart';
-import 'package:naeng_meh_chu/presentation/food_add/view/food_add_box.dart';
+import 'package:naeng_meh_chu/data/model/all_fridge_model.dart';
 
+import '../../presentation/food_add/view/food_add_box.dart';
+import '../../presentation/food_add/view_model/all_fridge_notifier.dart';
 import '../theme/naeng_meh_chu_theme_color.dart';
 import '../theme/naeng_meh_chu_theme_text_style.dart';
 
-class FoodSelectDialog extends ConsumerWidget {
+class FoodSelectDialog extends ConsumerStatefulWidget {
   const FoodSelectDialog({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _FoodSelectDialogState createState() => _FoodSelectDialogState();
+}
+
+class _FoodSelectDialogState extends ConsumerState<FoodSelectDialog> {
+  final ScrollController _scrollController = ScrollController();
+  int _currentPage = 0;
+  final int _pageSize = 30;
+  List<Ingredient> _ingredients = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchIngredients();
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        if (_scrollController.position.pixels != 0) {
+          _currentPage++;
+          _fetchIngredients();
+        }
+      }
+    });
+  }
+
+  Future<void> _fetchIngredients() async {
+    final notifier = ref.read(allFridgeNotifierProvider.notifier);
+    final newIngredients =
+    await notifier.getPagedIngredients(_currentPage, _pageSize);
+    setState(() {
+      _ingredients.addAll(newIngredients);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return PrimaryDialog(
       title: const Text('재료 선택'),
       titleTextStyle: NaengMehChuThemeTextStyle.gray1Medium16,
       content: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           children: [
             FoodAddBox(
@@ -42,18 +78,14 @@ class FoodSelectDialog extends ConsumerWidget {
                 ],
               ),
             ),
-            const FoodAddBox(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('달걀'),
-                Text('달걀'),
-                Text('달걀'),
-                Text('달걀'),
-                Text('달걀'),
-                Text('달걀'),
-              ],
-            ))
+            FoodAddBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: _ingredients
+                    .map((ingredient) => Text(ingredient.name))
+                    .toList(),
+              ),
+            ),
           ],
         ),
       ),

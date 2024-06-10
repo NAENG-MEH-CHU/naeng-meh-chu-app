@@ -5,6 +5,7 @@ import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/data/model/fridge_mine_model.dart';
+import 'package:naeng_meh_chu/presentation/food_add/food_add_screen.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/food_state.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view_model/fridge_mine_notifier.dart';
@@ -51,7 +52,14 @@ class RefrigeratorScreen extends ConsumerWidget {
                               width: 8,
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (builder) => const FoodAddScreen(),
+                                  ),
+                                );
+                              },
                               child: SvgPicture.asset('assets/icon/ic_add.svg'),
                             ),
                           ],

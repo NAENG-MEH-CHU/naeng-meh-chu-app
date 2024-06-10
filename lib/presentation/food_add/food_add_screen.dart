@@ -8,12 +8,14 @@ import 'package:naeng_meh_chu/core/naeng_meh_chu_calender.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_color.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/food_add/view/food_add_box.dart';
+import 'package:naeng_meh_chu/presentation/food_add/view_model/all_fridge_notifier.dart';
 
 class FoodAddScreen extends ConsumerWidget {
   const FoodAddScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return Scaffold(
       appBar: LeftBackButtonAppBar(
         onPress: () {
