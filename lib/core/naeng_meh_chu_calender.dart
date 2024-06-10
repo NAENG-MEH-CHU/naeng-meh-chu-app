@@ -7,9 +7,13 @@ import 'package:table_calendar/table_calendar.dart';
 
 class NaengMehChuCalender extends ConsumerStatefulWidget {
   final DateTime? lastDay;
+  final ValueChanged<DateTime> onDateSelected;
 
-  NaengMehChuCalender({super.key, DateTime? lastDay})
-      : lastDay = lastDay ?? DateTime.now();
+  NaengMehChuCalender({
+    super.key,
+    DateTime? lastDay,
+    required this.onDateSelected,
+  }) : lastDay = lastDay ?? DateTime.now();
 
   @override
   ConsumerState createState() => _NaengMehChuCalenderState();
@@ -17,25 +21,26 @@ class NaengMehChuCalender extends ConsumerStatefulWidget {
 
 class _NaengMehChuCalenderState extends ConsumerState<NaengMehChuCalender> {
   DateTime? _selectedDay;
-
   DateTime _focusedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     Future<void> selectDate(BuildContext context) async {
       DateTime? selectedDate = await showDatePicker(
-          context: context,
-          initialDate: _selectedDay,
-          firstDate: DateTime.utc(2024, 01, 01),
-          lastDate: DateTime.utc(2099, 12, 31),
-          initialDatePickerMode: DatePickerMode.year,
-          initialEntryMode: DatePickerEntryMode.calendarOnly);
+        context: context,
+        initialDate: _selectedDay ?? DateTime.now(),
+        firstDate: DateTime.utc(2024, 01, 01),
+        lastDate: DateTime.utc(2099, 12, 31),
+        initialDatePickerMode: DatePickerMode.year,
+        initialEntryMode: DatePickerEntryMode.calendarOnly,
+      );
 
       if (selectedDate != null) {
         setState(() {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
+        widget.onDateSelected(selectedDate);
       }
     }
 
@@ -55,6 +60,7 @@ class _NaengMehChuCalenderState extends ConsumerState<NaengMehChuCalender> {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
             });
+            widget.onDateSelected(selectedDay);  // Notify the parent widget
           }
         },
         onPageChanged: (focusedDay) {
@@ -62,15 +68,16 @@ class _NaengMehChuCalenderState extends ConsumerState<NaengMehChuCalender> {
         },
         onHeaderTapped: (dateTime) => selectDate(context),
         headerStyle: const HeaderStyle(
-            formatButtonVisible: false,
-            leftChevronVisible: false,
-            rightChevronVisible: false,
-            titleCentered: true,
-            titleTextStyle: NaengMehChuThemeTextStyle.gray1Medium16,
-            headerMargin: EdgeInsets.symmetric(vertical: 16.0),
-            decoration: BoxDecoration(
-              color: NaengMehChuThemeColor.pink6,
-            )),
+          formatButtonVisible: false,
+          leftChevronVisible: false,
+          rightChevronVisible: false,
+          titleCentered: true,
+          titleTextStyle: NaengMehChuThemeTextStyle.gray1Medium16,
+          headerMargin: EdgeInsets.symmetric(vertical: 16.0),
+          decoration: BoxDecoration(
+            color: NaengMehChuThemeColor.pink6,
+          ),
+        ),
         calendarStyle: const CalendarStyle(
           weekendTextStyle: NaengMehChuThemeTextStyle.gray1Medium16,
           defaultTextStyle: NaengMehChuThemeTextStyle.gray1Medium16,

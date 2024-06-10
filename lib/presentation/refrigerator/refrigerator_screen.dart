@@ -117,7 +117,7 @@ class RefrigeratorScreen extends ConsumerWidget {
                             return RefrigeratorFood(
                               stateColor: NaengMehChuThemeColor.pink6,
                               name: ingredient.name,
-                              dateTime: 'D-${ingredient.dueDay}',
+                              dateTime: 'D${ingredient.dueDay}',
                             );
                           },
                         ),
