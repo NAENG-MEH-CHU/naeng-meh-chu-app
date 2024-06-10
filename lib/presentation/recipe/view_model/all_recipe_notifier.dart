@@ -15,6 +15,7 @@ class RecipeNotifier extends StateNotifier<AsyncValue<List<RecipeDataResponse>>>
   int _page = 0;
   final int _limit = 10;
   bool _hasNextPage = true;
+  List<RecipeDataResponse> _allRecipes = [];
 
   Future<void> _fetchRecipes({bool isRefresh = false}) async {
     if (isRefresh) {
@@ -40,10 +41,12 @@ class RecipeNotifier extends StateNotifier<AsyncValue<List<RecipeDataResponse>>>
         _hasNextPage = false;
       }
 
-      state = AsyncValue.data([
+      _allRecipes = [
         if (state.value != null && !isRefresh) ...state.value!,
         ...fetchedRecipes,
-      ]);
+      ];
+
+      state = AsyncValue.data(_allRecipes);
     } catch (e) {
     }
   }
@@ -56,5 +59,13 @@ class RecipeNotifier extends StateNotifier<AsyncValue<List<RecipeDataResponse>>>
 
   void refreshRecipes() {
     _fetchRecipes(isRefresh: true);
+  }
+
+  void searchRecipes(String query) {
+    final filteredRecipes = _allRecipes
+        .where((recipe) =>
+        recipe.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    state = AsyncValue.data(filteredRecipes);
   }
 }

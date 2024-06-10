@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
@@ -8,10 +10,36 @@ import 'package:naeng_meh_chu/presentation/detail_recipe/detail_recipe_screen.da
 
 import '../../core/theme/naeng_meh_chu_theme_color.dart';
 
-class RecommendScreen extends StatelessWidget {
+class RecommendScreen extends StatefulWidget {
   final List<RecipeDataResponse> recipes;
 
   const RecommendScreen({super.key, required this.recipes});
+
+  @override
+  _RecommendScreenState createState() => _RecommendScreenState();
+}
+
+class _RecommendScreenState extends State<RecommendScreen> {
+  late RecipeDataResponse selectedRecipe;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.recipes.isNotEmpty) {
+      selectedRecipe = getRandomRecipe();
+    }
+  }
+
+  RecipeDataResponse getRandomRecipe() {
+    final random = Random();
+    return widget.recipes[random.nextInt(widget.recipes.length)];
+  }
+
+  void getNewRecommendation() {
+    setState(() {
+      selectedRecipe = getRandomRecipe();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,72 +53,84 @@ class RecommendScreen extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      body: Column(
-        children: [
-          Container(
-            height: containerHeight,
-            padding: const EdgeInsets.all(32.0),
-            decoration: ShapeDecoration(
-              color: NaengMehChuThemeColor.beige,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          const Text(
-            '비빔밥',
-            style: NaengMehChuThemeTextStyle.blackBold18,
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+      body: widget.recipes.isEmpty
+          ? const Center(
               child: Text(
-                '어쩌구' * 20,
-                style: NaengMehChuThemeTextStyle.gray1Regular14,
+                '앗! 만들 수 있는 레시피가 없어요',
+                style: NaengMehChuThemeTextStyle.pinkBold14,
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Row(
+            )
+          : Column(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: WhiteButton(
-                        text: '다른 추천 받기', onPressed: () {}, enabled: true),
+                Container(
+                  height: containerHeight,
+                  padding: const EdgeInsets.all(32.0),
+                  decoration: ShapeDecoration(
+                    color: NaengMehChuThemeColor.beige,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
+                  child: Image.network(selectedRecipe.thumbnail,
+                      fit: BoxFit.cover),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                Text(
+                  selectedRecipe.name,
+                  style: NaengMehChuThemeTextStyle.blackBold18,
+                ),
+                const SizedBox(
+                  height: 16.0,
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: PinkButton(
-                      text: '레시피 보기',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (builder) => const DetailRecipeScreen(
-                              foodName: '비빔밥',
-                            ),
-                          ),
-                        );
-                      },
-                      enabled: true,
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      '설명' * 20,
+                      style: NaengMehChuThemeTextStyle.gray1Regular14,
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: WhiteButton(
+                            text: '다른 추천 받기',
+                            onPressed: getNewRecommendation,
+                            enabled: true,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: PinkButton(
+                            text: '레시피 보기',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (builder) => DetailRecipeScreen(
+                                    recipe: selectedRecipe,
+                                  ),
+                                ),
+                              );
+                            },
+                            enabled: true,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-          )
-        ],
-      ),
     );
   }
 }
