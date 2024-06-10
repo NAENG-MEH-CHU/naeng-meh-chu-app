@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:naeng_meh_chu/core/app_bar/left_back_button_app_bar.dart';
 import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/button/white_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
+import 'package:naeng_meh_chu/data/model/recipe_data_response.dart';
 import 'package:naeng_meh_chu/presentation/detail_recipe/detail_recipe_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/theme/naeng_meh_chu_theme_color.dart';
 
-class RecommendScreen extends ConsumerWidget {
-  const RecommendScreen({super.key});
+class RecommendScreen extends StatelessWidget {
+  final List<RecipeDataResponse> recipes;
+
+  const RecommendScreen({super.key, required this.recipes});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final containerHeight = screenHeight / 3;
 
@@ -75,7 +76,9 @@ class RecommendScreen extends ConsumerWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (builder) => const DetailRecipeScreen(foodName: '비빔밥',),
+                            builder: (builder) => const DetailRecipeScreen(
+                              foodName: '비빔밥',
+                            ),
                           ),
                         );
                       },

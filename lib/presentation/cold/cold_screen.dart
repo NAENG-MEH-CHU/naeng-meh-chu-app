@@ -51,7 +51,6 @@ class ColdScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(),
-                            FoodState(),
                           ],
                         ),
                       ),

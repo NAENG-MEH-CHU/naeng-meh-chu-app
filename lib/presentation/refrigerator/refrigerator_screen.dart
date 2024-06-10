@@ -10,9 +10,10 @@ import 'package:naeng_meh_chu/presentation/refrigerator/view/food_state.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view_model/fridge_mine_notifier.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view_model/recipe_get_notifier.dart';
+import 'package:naeng_meh_chu/presentation/recommend/recommend_screen.dart'; // Import RecommendScreen
 
 import '../../core/app_bar/main_app_bar.dart';
-import '../../data/model/recipe_data_response.dart';
+import '../recommend/recommend_screen_with_loading.dart';
 
 class RefrigeratorScreen extends ConsumerWidget {
   const RefrigeratorScreen({Key? key});
@@ -20,7 +21,7 @@ class RefrigeratorScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<MyIngredient>> fridgeMine =
-        ref.watch(fridgeMineNotifierProvider);
+    ref.watch(fridgeMineNotifierProvider);
 
     return Scaffold(
       appBar: const MainAppBar(
@@ -30,6 +31,20 @@ class RefrigeratorScreen extends ConsumerWidget {
       ),
       body: fridgeMine.when(
         data: (ingredients) {
+          final List<MyIngredient> goodIngredients = [];
+          final List<MyIngredient> normalIngredients = [];
+          final List<MyIngredient> badIngredients = [];
+
+          for (final ingredient in ingredients) {
+            if (ingredient.dueDay < -3) {
+              goodIngredients.add(ingredient);
+            } else if (-3 > ingredient.dueDay && ingredient.dueDay > -7) {
+              normalIngredients.add(ingredient);
+            } else {
+              badIngredients.add(ingredient);
+            }
+          }
+
           return Column(
             children: [
               Padding(
@@ -48,11 +63,9 @@ class RefrigeratorScreen extends ConsumerWidget {
                             GestureDetector(
                               onTap: () {},
                               child:
-                                  SvgPicture.asset('assets/icon/ic_trash.svg'),
+                              SvgPicture.asset('assets/icon/ic_trash.svg'),
                             ),
-                            const SizedBox(
-                              width: 8,
-                            ),
+                            const SizedBox(width: 8),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -68,9 +81,7 @@ class RefrigeratorScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
+                    const SizedBox(height: 16.0),
                     Container(
                       width: double.infinity,
                       decoration: ShapeDecoration(
@@ -79,18 +90,22 @@ class RefrigeratorScreen extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(16.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   '나의 재료',
                                   style: NaengMehChuThemeTextStyle.blackBold14,
                                 ),
-                                FoodState(),
+                                FoodState(
+                                  good: goodIngredients.length,
+                                  normal: normalIngredients.length,
+                                  bad: badIngredients.length,
+                                ),
                               ],
                             ),
                           ],
@@ -106,25 +121,35 @@ class RefrigeratorScreen extends ConsumerWidget {
                   child: ingredients.isEmpty
                       ? const Center(child: Text('앗! 아직 재료가 없어요'))
                       : GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            childAspectRatio: 0.8,
-                            crossAxisSpacing: 8.0,
-                            mainAxisSpacing: 8.0,
-                          ),
-                          itemCount: ingredients.length,
-                          itemBuilder: (context, index) {
-                            final ingredient = ingredients[index];
-                            return RefrigeratorFood(
-                              stateColor: NaengMehChuThemeColor.pink6,
-                              name: ingredient.name,
-                              dateTime: ingredient.dueDay != 0
-                                  ? 'D${ingredient.dueDay}'
-                                  : '',
-                            );
-                          },
-                        ),
+                    gridDelegate:
+                    const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                    ),
+                    itemCount: ingredients.length,
+                    itemBuilder: (context, index) {
+                      final ingredient = ingredients[index];
+                      Color stateColor;
+                      String dateTime = '';
+                      if (ingredient.dueDay < -3) {
+                        stateColor = NaengMehChuThemeColor.pink2;
+                      } else if (ingredient.dueDay <= -7) {
+                        stateColor = NaengMehChuThemeColor.pink4;
+                      } else {
+                        stateColor = NaengMehChuThemeColor.pink6;
+                        dateTime = 'D${ingredient.dueDay}';
+                      }
+                      return RefrigeratorFood(
+                        stateColor: stateColor,
+                        name: ingredient.name,
+                        dateTime: ingredient.dueDay != 0
+                            ? 'D${ingredient.dueDay}'
+                            : '',
+                      );
+                    },
+                  ),
                 ),
               ),
               if (ingredients.isNotEmpty)
@@ -133,11 +158,18 @@ class RefrigeratorScreen extends ConsumerWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: PinkButton(
-                        text: '냉장고 털기',
-                        onPressed: () {
-                          ref.read(recipeGetNotifierProvider);
-                        },
-                        enabled: true),
+                      text: '냉장고 털기',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const RecommendScreenWithLoading(),
+                          ),
+                        );
+                      },
+                      enabled: true,
+                    ),
                   ),
                 ),
             ],
