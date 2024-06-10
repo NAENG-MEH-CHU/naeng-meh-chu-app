@@ -13,6 +13,7 @@ import 'package:naeng_meh_chu/presentation/food_add/view/food_add_box.dart';
 import 'package:naeng_meh_chu/presentation/food_add/view/selected_ingredient_notifier.dart';
 
 import '../../core/dialog/food_select_dialog.dart';
+import '../refrigerator/view_model/fridge_mine_notifier.dart';
 
 class FoodAddScreen extends ConsumerWidget {
   const FoodAddScreen({super.key});
@@ -46,7 +47,13 @@ class FoodAddScreen extends ConsumerWidget {
             expirationDate.month,
             expirationDate.day,
           );
-          print('저장 성공');
+
+          ref.invalidate(fridgeMineNotifierProvider);
+          ref.read((fridgeMineNotifierProvider));
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('저장 성공'),
+            duration: Duration(seconds: 5),
+          ));
         } catch (e) {
           print('저장 실패: $e');
         }
@@ -109,10 +116,6 @@ class FoodAddScreen extends ConsumerWidget {
                       const Text(
                         '유통 기한을 설정해주세요.',
                         style: NaengMehChuThemeTextStyle.blackBold16,
-                      ),
-                      const Text(
-                        '(건너뛰어도 괜찮아요)',
-                        style: NaengMehChuThemeTextStyle.blackMedium12,
                       ),
                       FoodAddBox(
                         child: Text(

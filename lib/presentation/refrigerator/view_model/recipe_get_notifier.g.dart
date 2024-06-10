@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'all_fridge_notifier.dart';
+part of 'recipe_get_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allFridgeNotifierHash() => r'b2d5f80066100a4273d836f6f53de8213374bda0';
+String _$recipeGetNotifierHash() => r'a2ccf3bf2f5fb7a68e6446a2269cb3952489e9f3';
 
-/// See also [AllFridgeNotifier].
-@ProviderFor(AllFridgeNotifier)
-final allFridgeNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    AllFridgeNotifier, AllFridgeModel>.internal(
-  AllFridgeNotifier.new,
-  name: r'allFridgeNotifierProvider',
+/// See also [recipeGetNotifier].
+@ProviderFor(recipeGetNotifier)
+final recipeGetNotifierProvider =
+    AutoDisposeFutureProvider<List<RecipeDataResponse>>.internal(
+  recipeGetNotifier,
+  name: r'recipeGetNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$allFridgeNotifierHash,
+      : _$recipeGetNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AllFridgeNotifier = AutoDisposeAsyncNotifier<AllFridgeModel>;
+typedef RecipeGetNotifierRef
+    = AutoDisposeFutureProviderRef<List<RecipeDataResponse>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

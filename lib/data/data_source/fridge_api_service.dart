@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'api_client.dart';
@@ -46,10 +45,10 @@ class FridgeApiService {
 
     final response = await apiClient.post(url, headers: headers, body: body);
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return utf8.decode(response.body.codeUnits);
     } else {
-      throw Exception('Failed to all fridge');
+      throw Exception('Failed to all fridge ${response.body}');
     }
   }
 }

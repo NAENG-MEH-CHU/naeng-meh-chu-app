@@ -24,25 +24,15 @@ class RefrigeratorFood extends ConsumerWidget {
         Stack(
           alignment: Alignment.topRight,
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (builder) => const ColdScreen(),
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(32.0),
-                decoration: ShapeDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage('assets/image/img_logo.png'),
-                  ),
-                  color: NaengMehChuThemeColor.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+            Container(
+              padding: const EdgeInsets.all(32.0),
+              decoration: ShapeDecoration(
+                image: const DecorationImage(
+                  image: AssetImage('assets/image/img_logo.png'),
+                ),
+                color: NaengMehChuThemeColor.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
                 ),
               ),
             ),
