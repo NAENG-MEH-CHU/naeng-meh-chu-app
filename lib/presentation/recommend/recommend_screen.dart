@@ -5,6 +5,7 @@ import 'package:naeng_meh_chu/core/button/pink_button.dart';
 import 'package:naeng_meh_chu/core/button/white_button.dart';
 import 'package:naeng_meh_chu/core/theme/naeng_meh_chu_theme_text_style.dart';
 import 'package:naeng_meh_chu/presentation/detail_recipe/detail_recipe_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/theme/naeng_meh_chu_theme_color.dart';
 
