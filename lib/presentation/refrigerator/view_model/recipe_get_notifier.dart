@@ -11,9 +11,10 @@ part 'recipe_get_notifier.g.dart';
 Future<List<RecipeDataResponse>> recipeGetNotifier(
     RecipeGetNotifierRef ref) async {
   final response = await RecipeRepository.recipe();
+
   final json = jsonDecode(response) as Map<String, dynamic>;
 
-  final List<dynamic> data = json['recipeDataResponse'] as List<dynamic>? ?? [];
+  final List<dynamic> data = json['recipeDataResponses'] as List<dynamic>? ?? [];
 
   return data.map((item) => RecipeDataResponse.fromJson(item)).toList();
 }

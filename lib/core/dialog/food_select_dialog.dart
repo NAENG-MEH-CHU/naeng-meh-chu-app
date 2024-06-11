@@ -21,7 +21,7 @@ class FoodSelectDialog extends ConsumerStatefulWidget {
 class _FoodSelectDialogState extends ConsumerState<FoodSelectDialog> {
   final ScrollController _scrollController = ScrollController();
   int _currentPage = 0;
-  final int _pageSize = 30;
+  final int _pageSize = 300;
   List<Ingredient> _ingredients = [];
   List<Ingredient> _filteredIngredients = [];
   String _searchQuery = '';

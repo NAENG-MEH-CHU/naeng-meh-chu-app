@@ -38,7 +38,7 @@ class _RecipeCardState extends ConsumerState<RecipeCard> {
         (previous, next) {
       next.when(
         data: (detail) {
-          if (_isLinkOpening) return; // Prevent duplicate link opening
+          if (_isLinkOpening) return;
 
           final decodedDetail = jsonDecode(detail);
           final recipeLink = decodedDetail['recipeLink'];

@@ -10,10 +10,9 @@ import 'package:naeng_meh_chu/presentation/refrigerator/view/food_state.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view/refrigerator_food.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view_model/fridge_mine_notifier.dart';
 import 'package:naeng_meh_chu/presentation/refrigerator/view_model/recipe_get_notifier.dart';
-import 'package:naeng_meh_chu/presentation/recommend/recommend_screen.dart'; // Import RecommendScreen
+import 'package:naeng_meh_chu/presentation/recommend/recommend_screen_with_loading.dart';
 
 import '../../core/app_bar/main_app_bar.dart';
-import '../recommend/recommend_screen_with_loading.dart';
 
 class RefrigeratorScreen extends ConsumerWidget {
   const RefrigeratorScreen({Key? key});
@@ -62,8 +61,7 @@ class RefrigeratorScreen extends ConsumerWidget {
                           children: [
                             GestureDetector(
                               onTap: () {},
-                              child:
-                              SvgPicture.asset('assets/icon/ic_trash.svg'),
+                              child: SvgPicture.asset('assets/icon/ic_trash.svg'),
                             ),
                             const SizedBox(width: 8),
                             GestureDetector(
