@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,10 +34,11 @@ class _RecipeCardState extends ConsumerState<RecipeCard> {
     final screenHeight = MediaQuery.of(context).size.height;
     final containerHeight = screenHeight / 5;
 
-    ref.listen<AsyncValue<String>>(recipeDetailNotifierProvider, (previous, next) {
+    ref.listen<AsyncValue<String>>(recipeDetailNotifierProvider,
+        (previous, next) {
       next.when(
         data: (detail) {
-          if (_isLinkOpening) return;  // Prevent duplicate link opening
+          if (_isLinkOpening) return;
 
           final decodedDetail = jsonDecode(detail);
           final recipeLink = decodedDetail['recipeLink'];
@@ -77,14 +79,16 @@ class _RecipeCardState extends ConsumerState<RecipeCard> {
 
     return GestureDetector(
       onTap: () async {
-        await ref.read(recipeDetailNotifierProvider.notifier).getRecipeDetail(widget.recipeId);
+        await ref
+            .read(recipeDetailNotifierProvider.notifier)
+            .getRecipeDetail(widget.recipeId);
       },
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Container(
           width: double.infinity,
           decoration: ShapeDecoration(
-            color: NaengMehChuThemeColor.pinkBackground,
+            color: NaengMehChuThemeColor.pink6,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -122,16 +126,11 @@ class _RecipeCardState extends ConsumerState<RecipeCard> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                Text(
-                  widget.title,
-                  style: NaengMehChuThemeTextStyle.gray1Medium16,
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                Text(
-                  widget.description,
-                  style: NaengMehChuThemeTextStyle.gray1Regular12,
+                Center(
+                  child: Text(
+                    widget.title,
+                    style: NaengMehChuThemeTextStyle.gray1Bold15,
+                  ),
                 ),
               ],
             ),

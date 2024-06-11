@@ -27,6 +27,19 @@ class RecipeApiService {
       throw Exception('Failed to fetch recipe detail for ID: $recipeId');
     }
   }
+
+
+  Future<String> recipe() async {
+    const url = '/api/recipe/ingredients';
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to Recipe');
+    }
+  }
 }
 
 final recipeApiServiceProvider = Provider<RecipeApiService>((ref) {

@@ -2,18 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/form/primary_text_form_field.dart';
 import '../../../core/theme/naeng_meh_chu_theme_color.dart';
-import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
 
 class SearchContainer extends ConsumerWidget {
-  const SearchContainer({super.key, required this.message});
+  const SearchContainer({super.key, required this.onChanged});
 
-  final String message;
+  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      width: double.infinity,
       padding: const EdgeInsets.all(16.0),
       decoration: ShapeDecoration(
         color: NaengMehChuThemeColor.pinkBackground,
@@ -25,9 +24,11 @@ class SearchContainer extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            message,
-            style: NaengMehChuThemeTextStyle.gray1Regular12,
+          Expanded(
+            child: PrimaryTextFormField(
+              hintText: '레시피를 검색해 보세요',
+              onChanged: onChanged,
+            ),
           ),
           SvgPicture.asset(
             'assets/icon/ic_search.svg',

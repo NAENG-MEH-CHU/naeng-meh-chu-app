@@ -20,28 +20,28 @@ class MyPageScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 14.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 14.0),
                 child: Card(
                   color: NaengMehChuThemeColor.pink6,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Center(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const CircleAvatar(
+                          CircleAvatar(
                             backgroundImage:
                                 AssetImage('assets/profle_image.png'),
                             radius: 24,
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
-                                '푸매니저김아린님!',
+                                '푸매니저님!',
                                 style: NaengMehChuThemeTextStyle.blackBold15,
                               ),
                               SizedBox(height: 4),

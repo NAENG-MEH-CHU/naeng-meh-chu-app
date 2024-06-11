@@ -5,7 +5,12 @@ import '../../../core/theme/naeng_meh_chu_theme_color.dart';
 import '../../../core/theme/naeng_meh_chu_theme_text_style.dart';
 
 class FoodState extends ConsumerWidget {
-  const FoodState({super.key});
+  const FoodState(
+      {super.key, required this.good, required this.normal, required this.bad});
+
+  final good;
+  final normal;
+  final bad;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,8 +27,8 @@ class FoodState extends ConsumerWidget {
         const SizedBox(
           width: 4.0,
         ),
-        const Text(
-          '안전',
+        Text(
+          '안전 ${good} ',
           style: NaengMehChuThemeTextStyle.good11,
         ),
         const SizedBox(
@@ -40,8 +45,8 @@ class FoodState extends ConsumerWidget {
         const SizedBox(
           width: 4.0,
         ),
-        const Text(
-          '보통',
+        Text(
+          '보통 ${normal} ',
           style: NaengMehChuThemeTextStyle.normal11,
         ),
         const SizedBox(
@@ -58,8 +63,8 @@ class FoodState extends ConsumerWidget {
         const SizedBox(
           width: 4.0,
         ),
-        const Text(
-          '위험',
+        Text(
+          '위험 ${bad} ',
           style: NaengMehChuThemeTextStyle.bad11,
         ),
       ],

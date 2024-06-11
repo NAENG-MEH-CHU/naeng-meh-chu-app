@@ -24,9 +24,6 @@ class ColdScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const SearchContainer(
-                message: '오늘은 이 재료로 음식해 보는 거 어때요?',
-              ),
               const SizedBox(
                 height: 16,
               ),
@@ -51,7 +48,6 @@ class ColdScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(),
-                            FoodState(),
                           ],
                         ),
                       ),
